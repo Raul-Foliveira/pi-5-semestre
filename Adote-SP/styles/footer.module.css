@@ -1,0 +1,43 @@
+.footer {
+    background-color: #00686C;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+  }
+  
+  .footer p {
+    font-family: "Telex", sans-serif;
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .socialLinks {
+    margin-top: 10px;
+  }
+  
+  .socialLinks a {
+    font-family: "Telex", sans-serif;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .socialLinks a:hover {
+    color: #f1c40f;
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      padding: 15px;
+    }
+  
+    .socialLinks a {
+      margin: 0 5px;
+      font-size: 14px;
+    }
+  }
+  

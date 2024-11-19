@@ -1,0 +1,76 @@
+/* Estilo para a seção de busca */
+.searchBar {
+    background-color: #f5fafc;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  
+  .searchBar h2 {
+    font-weight: bold;
+    color: #FF9915; 
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo do formulário de busca */
+  .searchBar form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  /* Estilo para os selects e input de texto */
+  .searchBar select,
+  .searchBar input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 180px;
+    transition: border-color 0.3s;
+  }
+  
+  .searchBar select:focus,
+  .searchBar input[type="text"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+  }
+  
+  /* Estilo do botão de busca */
+  .searchBar button {
+    background-color: #FF9915; 
+    color: white; 
+    text-shadow: 1px 1px 5px black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .searchBar button:hover {
+    background-color: #c57702; 
+    transform: scale(1.05); 
+  }
+  
+  /* Tornar o layout responsivo */
+  @media (max-width: 768px) {
+    .searchBar form {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .searchBar select,
+    .searchBar input[type="text"] {
+      width: 100%;
+    }
+  
+    .searchBar button {
+      width: 100%;
+    }
+  }
+  

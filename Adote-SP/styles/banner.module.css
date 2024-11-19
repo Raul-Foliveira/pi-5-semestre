@@ -1,0 +1,102 @@
+/* banner.module.css */
+
+.banner {
+  background: linear-gradient(to bottom, #00686b, #f5fafc); /* Degradê vertical de #00686C para #50b6b9 */
+  padding: 100px 50px;
+  position: relative;
+  display: flex; /* Usa flexbox para alinhar os filhos */
+  justify-content: space-between; /* Garante que o texto e a imagem fiquem em extremos */
+  align-items: center; /* Alinha verticalmente ao centro */
+}
+
+.bannerContent {
+  display: flex; /* Organiza o texto e a imagem em linha */
+  justify-content: space-between; /* Espaçamento entre o texto e a imagem */
+  width: 100%;
+}
+
+.bannerText {
+  flex: 1; /* O texto ocupa 1 parte do espaço */
+  max-width: 50%; /* Limita a largura máxima do texto */
+  color: #f5f5f5; /* Cor do texto para legibilidade */
+}
+
+.bannerText h1 {
+  font-family: "Lilita One", sans-serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.bannerText h2 {
+  font-family: "Lilita One", sans-serif;
+  font-size: 1.5rem;
+  margin: -20px 0 20px 0;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.bannerText p {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.bannerText strong {
+  color: #FF9915; /* Cor para destacar palavras importantes */
+}
+
+.banner button {
+  background-color: #FF9915;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.banner button:hover {
+  background-color: #c57702;
+  transform: scale(1.05);
+}
+
+.bannerImage {
+  flex: 1; /* A imagem ocupa 1 parte do espaço */
+  max-width: 50%; /* Limita a largura máxima da imagem */
+  padding-left: 20px; /* Espaçamento à esquerda da imagem */
+}
+
+.bannerImage img {
+  width: 100%; /* Faz com que a imagem ocupe toda a largura disponível */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 10px; /* Bordas arredondadas na imagem */
+  object-fit: cover; /* Garante que a imagem cubra todo o espaço sem distorcer */
+}
+
+@media (max-width: 768px) {
+  .bannerContent {
+    flex-direction: column; /* Coloca os itens em coluna em telas menores */
+    text-align: center; /* Centraliza o texto */
+  }
+
+  .bannerText {
+    max-width: 100%; /* O texto ocupa toda a largura em telas pequenas */
+    margin-bottom: 20px; /* Espaçamento abaixo do texto */
+  }
+
+  .bannerImage {
+    max-width: 100%; /* A imagem ocupa toda a largura disponível */
+  }
+
+  .bannerText h1 {
+    font-size: 2.5rem; /* Ajuste do tamanho da fonte para telas menores */
+  }
+
+  .bannerText p {
+    font-size: 1.2rem; /* Ajuste do tamanho da fonte para telas menores */
+  }
+}

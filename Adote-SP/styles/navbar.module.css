@@ -1,0 +1,75 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #00686C;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaço entre o logo e o texto */
+}
+
+.logoImage {
+  height: 90px;
+  width: auto;
+  max-width: 100%; /* Responsividade para largura */
+}
+
+.logoText {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Telex", sans-serif;
+  line-height: 1;
+}
+
+.navLinks {
+  font-family: "Telex", sans-serif;
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin-right: 1%;
+}
+
+.navLinks li a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.navLinks li a:hover {
+  text-decoration: underline;
+}
+
+.buttonLink {
+  background: none;
+  border: none;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .logoImage {
+    height: 60px; /* Reduz o tamanho do logo em telas menores */
+  }
+
+  .logoText {
+    font-size: 1.2rem; /* Reduz o tamanho do texto para telas menores */
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navLinks {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+}

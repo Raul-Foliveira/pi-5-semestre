@@ -1,0 +1,39 @@
+.aboutUs {
+    padding: 40px;
+    background-color: #f5fafc;
+    text-align: center;
+}
+
+.aboutUs h2 {
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #FF9915; 
+    margin-bottom: 20px;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.content p {
+    font-size: 1.2rem;
+    color: #000000;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .aboutUs {
+        padding: 20px;
+    }
+
+    .aboutUs h2 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+}

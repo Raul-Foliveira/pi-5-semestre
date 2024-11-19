@@ -1,0 +1,246 @@
+.container {
+    font-family: "Telex", sans-serif;
+    display: flex;
+    height: 100vh;
+    background-color: #00686C; 
+    position: relative; /* Permite a posição absoluta da imagem de patas */
+}
+
+.imageContainer {
+    flex: 1;
+    overflow: hidden;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.loginContainer {
+    color: white;
+    flex: 1;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #00686C;
+    text-shadow: 2px 2px 4px black;
+    position: relative; /* Para que o ícone de patas seja posicionado em relação a este container */
+}
+
+.title {
+    text-align: center;
+    text-shadow: 2px 2px 4px black;
+    font-family: "Telex", sans-serif;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+    position: relative; /* Necessário para posicionar o gif dentro desse grupo */
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    margin: 0% 0% 0% 25%;
+    text-shadow: 2px 2px 4px black;
+}
+
+.input {
+    width: 50%;
+    margin: 0% 0% 0% 25%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.forgotPassword {
+    margin-left: 50%;
+    margin-top: 10px;
+}
+
+.welcomeTitle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.buttonContainer {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+}
+
+.button {
+    background-color: #FF9915;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+    width: 100%;
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #c57702;
+    transform: scale(1.05);
+}
+
+
+
+/* Estilo para os alertas */
+.alert {
+    margin-top: 10px; /* Adiciona um pequeno espaçamento entre os campos */
+    padding: 15px; /* Reduz o padding para deixar o alerta mais compacto */
+    border-radius: 8px; /* Borda arredondada para suavizar */
+    color: #721c24; /* Cor do texto */
+    text-align: center; /* Centraliza o texto */
+    font-size: 14px; /* Tamanho da fonte */
+    width: 50%; /* Largura total do container */
+    max-width: 400px; /* Limita a largura máxima */
+    margin-left: auto; /* Centraliza o alerta na tela */
+    margin-right: auto; /* Centraliza o alerta na tela */
+}
+
+/* Estilo para o alerta de erro */
+.alertError {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+
+/* Estilo para o alerta de sucesso */
+.alertSuccess {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .imageContainer {
+        width: 100%;
+        height: 30vh;
+    }
+
+    .loginContainer {
+        width: 90%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .input {
+        width: 100%;
+        margin: 0;
+    }
+
+    .buttonContainer {
+        width: 80%;
+    }
+
+    .forgotPassword {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .welcomeTitle {
+        font-size: 1.5rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+}
+    /* Ajustando o ícone de patas para telas menores */
+    
+/* Ajustando o ícone de patas para telas menores */
+/* Ajuste geral para ícones em telas grandes */
+.pawsIconContainer {
+    position: absolute;
+    top: calc(2% + 1rem);
+    right: calc(2% + 1rem);
+    z-index: 10;
+    width: 3rem;
+    height: auto;
+}
+
+.pawsIconContainer2 {
+    position: absolute;
+    top: calc(96% - 1rem);
+    right: 48%;
+    transform: translate(50%, -50%);
+    z-index: 10;
+    width: 3rem;
+}
+
+
+.cat {
+    position: absolute;
+    top: calc(-105% + 1rem);
+    right: calc(25% + 1rem);
+    width: 4rem;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+.dog {
+    position: absolute;
+    top: calc(15% + 1rem);
+    right: calc(5% + 1rem);
+    width: 4rem;
+    height: auto;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+
+/* Estilos para dispositivos com largura menor ou igual a 768px */
+@media (max-width: 768px) {
+    .pawsIconContainer {
+        top: calc(0% + 1rem);  /* Ajuste a posição do topo */
+        right: calc(8% + 1rem); /* Ajuste a posição da direita */
+        width: 3rem; /* Diminui o tamanho para se ajustar melhor à tela */
+    }
+
+    .pawsIconContainer2 {
+        top: 95%; /* Move mais para baixo na versão mobile */
+        right: 95%;
+        transform: translate(40%, -50%);
+        width: 2rem; /* Ajuste o tamanho do ícone */
+    }
+
+    /* Ajuste específico para o GIF */
+    .cat {
+        top: calc(-85% + 1rem); /* Ajusta a posição do topo para versão mobile */
+        right: calc(5% + 1rem); /* Ajuste a posição da direita */
+        width: 3rem; /* Reduz o tamanho do ícone */
+        height: auto;
+    }
+
+    .dog {
+        top: calc(25% + 1rem); /* Posiciona um pouco mais para baixo */
+        right: calc(10% + 1rem);
+        width: 3rem; /* Reduz o tamanho do ícone */
+        height: auto;
+    }
+}

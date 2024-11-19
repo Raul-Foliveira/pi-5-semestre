@@ -1,0 +1,88 @@
+.pageBackground {
+    background-color: #00686C; /* Cor de fundo da página */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Para cobrir a altura total da tela */
+    padding: 0 20px;  /* Adiciona um pequeno espaço lateral, para que a caixa não fique colada nas bordas em telas pequenas */
+}
+
+.cadastro {
+    padding: 60px 80px; /* Diminui um pouco o padding, mas mantém o espaçamento interno confortável */
+    background-color: #f5fafc; 
+    text-align: center;
+    width: 100%;  /* Garante que a largura ocupe toda a largura disponível */
+    max-width: 900px;  /* Aumenta o máximo da largura */
+    box-sizing: border-box; 
+    border-radius: 8px;  
+}
+
+.cadastro h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.formGroup {
+    margin-bottom: 20px; /* Aumenta o espaço entre os campos */
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;  /* Mais espaço entre o rótulo e o campo */
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 12px;  /* Aumenta o padding para mais espaço dentro do campo */
+    font-size: 1.1rem; /* Aumenta o tamanho da fonte para melhorar a legibilidade */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submitButton {
+    padding: 15px 20px;  /* Aumenta o tamanho do botão */
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #007bff; /* Cor do botão */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+@media (max-width: 768px) {
+    .cadastro {
+        padding: 20px; /* Reduz o padding para telas pequenas */
+        width: 100%;
+        max-width: 90%;  /* Reduz o máximo para 90% da tela em dispositivos móveis */
+    }
+
+    .cadastro h2 {
+        font-size: 2rem;
+    }
+
+    .form {
+        max-width: 100%;  /* Para que ocupe 100% da tela em dispositivos menores */
+    }
+
+    .formGroup input {
+        padding: 10px;  /* Reduz o padding para telas menores */
+        font-size: 1rem;
+    }
+
+    .submitButton {
+        padding: 12px 15px; /* Ajusta o tamanho do botão */
+    }
+}

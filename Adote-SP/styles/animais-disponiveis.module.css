@@ -1,0 +1,12 @@
+/* Atualização no CSS da página principal (por exemplo, no seu arquivo .module.css da página de animais) */
+.mainContent {
+    padding-left: 250px; /* Ou 200px para telas menores */
+    padding-top: 20px;
+    margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .mainContent {
+        padding-left: 200px; /* Reduz o padding da página principal em telas pequenas */
+    }
+}
