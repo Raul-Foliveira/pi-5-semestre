@@ -3,23 +3,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Para cobrir a altura total da tela */
-    padding: 0 20px;  /* Adiciona um pequeno espaço lateral, para que a caixa não fique colada nas bordas em telas pequenas */
+    min-height: 100vh; 
+    padding: 0 20px;  
 }
 
 .cadastro {
-    padding: 60px 80px; /* Diminui um pouco o padding, mas mantém o espaçamento interno confortável */
+    padding: 60px 80px; 
     background-color: #f5fafc; 
     text-align: center;
-    width: 100%;  /* Garante que a largura ocupe toda a largura disponível */
-    max-width: 900px;  /* Aumenta o máximo da largura */
+    width: 100%;  
+    max-width: 900px;  
     box-sizing: border-box; 
     border-radius: 8px;  
 }
 
 .cadastro h2 {
     font-size: 2.5rem;
-    color: #333;
+    color: #ff9915;
     margin-bottom: 20px;
 }
 
@@ -30,43 +30,62 @@
 }
 
 .formGroup {
-    margin-bottom: 20px; /* Aumenta o espaço entre os campos */
+    margin-bottom: 20px; 
 }
 
 .formGroup label {
     display: block;
-    margin-bottom: 8px;  /* Mais espaço entre o rótulo e o campo */
+    margin-bottom: 8px;  
     font-size: 1.1rem;
     color: #333;
 }
 
 .formGroup input {
     width: 100%;
-    padding: 12px;  /* Aumenta o padding para mais espaço dentro do campo */
-    font-size: 1.1rem; /* Aumenta o tamanho da fonte para melhorar a legibilidade */
+    padding: 12px;  
+    font-size: 1.1rem; 
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
+/* Estilos do botão de cadastrar */
 .submitButton {
-    padding: 15px 20px;  /* Aumenta o tamanho do botão */
+    padding: 15px 20px;  
     font-size: 1.2rem;
     color: #fff;
-    background-color: #007bff; /* Cor do botão */
+    background-color: #ff9915;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
 .submitButton:hover {
-    background-color: #0056b3; /* Cor ao passar o mouse */
+    background-color: #c57702;
 }
+
+/* Estilos do botão de voltar */
+.backButton {
+    padding: 15px 40px; 
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #ff9915;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-right: 85%;  
+}
+
+.backButton:hover {
+    background-color: #c57702;  /* Cor de hover */
+}
+
 
 @media (max-width: 768px) {
     .cadastro {
-        padding: 20px; /* Reduz o padding para telas pequenas */
+        padding: 20px; 
         width: 100%;
-        max-width: 90%;  /* Reduz o máximo para 90% da tela em dispositivos móveis */
+        max-width: 90%;  
     }
 
     .cadastro h2 {
@@ -74,15 +93,19 @@
     }
 
     .form {
-        max-width: 100%;  /* Para que ocupe 100% da tela em dispositivos menores */
+        max-width: 100%;  
     }
 
     .formGroup input {
-        padding: 10px;  /* Reduz o padding para telas menores */
+        padding: 10px;  
         font-size: 1rem;
     }
 
     .submitButton {
-        padding: 12px 15px; /* Ajusta o tamanho do botão */
+        padding: 12px 15px; 
+    }
+
+    .backButton {
+        padding: 12px 35px; 
     }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Importando o axios para fazer requisições
 import styles from '../styles/cadastro.module.css';
+import { useRouter } from 'next/router';  // Importando o useRouter para navegação
 
 const Cadastro = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Cadastro = () => {
     });
 
     const [error, setError] = useState(null); // Para capturar possíveis erros
+    const router = useRouter();  // Inicializando o hook de roteamento
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -38,11 +40,17 @@ const Cadastro = () => {
         }
     };
 
+    // Função para voltar à página de Admin Home
+    const handleGoBack = () => {
+        router.push('/admin');  // Redireciona para a página de Admin Home
+    };
+
     return (
         <div className={styles.pageBackground}>
             <section className={styles.cadastro}>
                 <h2>Cadastro</h2>
                 {error && <p className={styles.error}>{error}</p>} {/* Exibe a mensagem de erro */}
+                
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.formGroup}>
                         <label htmlFor="nome">Nome</label>
@@ -101,6 +109,9 @@ const Cadastro = () => {
                     </div>
                     <button type="submit" className={styles.submitButton}>Cadastrar</button>
                 </form>
+
+                {/* Botão para voltar à página de Admin Home (abaixo do botão de cadastrar) */}
+                <button onClick={handleGoBack} className={styles.backButton}>Voltar</button>
             </section>
         </div>
     );

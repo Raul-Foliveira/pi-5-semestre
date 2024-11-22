@@ -1,0 +1,78 @@
+.adminHome {
+    text-align: center;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #f4f4f4; /* Adiciona um fundo suave */
+    border-radius: 8px;  /* Adiciona bordas arredondadas à área */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidade */
+}
+
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;  /* Deixa o título mais forte */
+    letter-spacing: 1px;  /* Adiciona espaçamento entre as letras */
+}
+
+.description {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: #666;
+    line-height: 1.6;  /* Torna o texto mais legível */
+    font-weight: 500;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;  /* Adiciona espaçamento entre o conteúdo e os botões */
+}
+
+.button {
+    background-color: #ff9915;
+    color: #fff;
+    border: none;
+    border-radius: 8px;  /* Arredonda os cantos dos botões */
+    padding: 16px 28px;  /* Aumenta o tamanho do botão */
+    font-size: 1.1rem;
+    font-weight: 600;  /* Aumenta o peso da fonte para maior destaque */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve ao redor dos botões */
+}
+
+.button:hover {
+    background-color: #c57702;
+    transform: translateY(-3px); /* Efeito de elevação ao passar o mouse */
+}
+
+.button:active {
+    transform: translateY(1px);  /* Efeito ao clicar no botão */
+}
+
+/* Efeito de foco para acessibilidade */
+.button:focus {
+    outline: 3px solid #ff9915;
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .adminHome {
+        padding: 15px;  /* Ajuste no padding para telas menores */
+    }
+
+    .title {
+        font-size: 2rem;  /* Reduz o tamanho do título em telas menores */
+    }
+
+    .description {
+        font-size: 1.1rem;
+    }
+
+    .buttonContainer {
+        flex-direction: column;  /* Alinha os botões em coluna em telas pequenas */
+        gap: 15px;  /* Reduz o espaço entre os botões */
+    }
+}

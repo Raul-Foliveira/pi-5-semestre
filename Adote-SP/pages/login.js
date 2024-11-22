@@ -126,10 +126,13 @@ const Login = () => {
 
                     {/* Link para cadastro */}
                     <div className={styles.buttonContainer}>
-                        <Link href="/cadastro" passHref>
-                            <button className={styles.button} type="button">Não possui uma conta?</button>
+                        <Link href="/admin" passHref>
+                            <button className={styles.button} type="button">Acessar Home do Admin</button>
                         </Link>
                     </div>
+
+                    
+
                 </form>
             </div>
 
