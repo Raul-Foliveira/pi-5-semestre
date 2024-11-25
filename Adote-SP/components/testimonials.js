@@ -3,25 +3,6 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/testimonials.module.css';
 
 const Testimonials = () => {
-<<<<<<< HEAD
-  const testimonials = [
-    {
-      id: 1,
-      nome: 'Ana Silva',
-      depoimento: 'Adotei o Rex e ele trouxe tanta alegria para minha casa!',
-    },
-    {
-      id: 2,
-      nome: 'Carlos Pereira',
-      depoimento: 'Mia é uma gatinha incrível, muito carinhosa e brincalhona.',
-    },
-    {
-      id: 3,
-      nome: 'Carlos Pereira',
-      depoimento: 'Mia é uma gatinha incrível, muito carinhosa e brincalhona.',
-    },
-  ];
-=======
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -53,7 +34,6 @@ const Testimonials = () => {
   if (error) {
     return <p>{error}</p>;
   }
->>>>>>> 35b27a3d66a2e87264878b5b1fafe27cba5b1d25
 
   return (
     <section className={styles.testimonials}>
