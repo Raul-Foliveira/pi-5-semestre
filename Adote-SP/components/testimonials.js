@@ -14,7 +14,7 @@ const Testimonials = () => {
       depoimento: 'Mia é uma gatinha incrível, muito carinhosa e brincalhona.',
     },
     {
-      id: 2,
+      id: 3,
       nome: 'Carlos Pereira',
       depoimento: 'Mia é uma gatinha incrível, muito carinhosa e brincalhona.',
     },

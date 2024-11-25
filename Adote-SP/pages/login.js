@@ -131,6 +131,13 @@ const Login = () => {
                         </Link>
                     </div>
 
+                    <div className={styles.buttonContainer}>
+                        <Link href="/adoptionForm" passHref>
+                            <button className={styles.button} type="button">TESTE FORM</button>
+                        </Link>
+                    </div>
+            
+
                     
 
                 </form>
