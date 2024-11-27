@@ -1,39 +1,66 @@
-import { useRouter } from 'next/router'; // Importação do roteador
+import { useRouter } from 'next/router';
 import styles from '../styles/adminHome.module.css';
 
 const AdminHome = () => {
     const router = useRouter();
 
-    // Função para redirecionar ao cadastro de animais
     const handleAnimalRegister = () => {
-        router.push('/admin/register-animal'); // Verifique se essa rota existe
+        router.push('/admin/register-animal');
     };
 
-    // Função para redirecionar ao cadastro de administradores
     const handleAdminRegister = () => {
-        router.push('/cadastro'); // Verifique se essa rota existe
+        router.push('/cadastro');
+    };
+
+    const handleLogout = () => {
+        router.push('/'); // Redireciona para a página principal
     };
 
     return (
         <div className={styles.adminHome}>
-            <h1 className={styles.title}>Área do Administrador</h1>
-            <p className={styles.description}>
-                Bem-vindo à área administrativa. Escolha uma das opções abaixo:
-            </p>
-            <div className={styles.buttonContainer}>
-                {/* Botão para cadastro de novo animal */}
-                <button
-                    onClick={handleAnimalRegister}
-                    className={styles.button}>
+            <div className={styles.sidebar}>
+                <h2 className={styles.sidebarTitle}>Menu</h2>
+                <button onClick={handleAnimalRegister} className={styles.sidebarButton}>
                     Cadastrar Novo Animal
                 </button>
 
-                {/* Botão para cadastro de novo administrador */}
-                <button
-                    onClick={handleAdminRegister}
-                    className={styles.button}>
+                <button onClick={handleAdminRegister} className={styles.sidebarButton}>
                     Cadastrar Novo Administrador
                 </button>
+                
+                <button className={`${styles.sidebarButton} ${styles.listing}`}>
+                        Listar Animais
+                </button>
+
+                <button className={`${styles.sidebarButton} ${styles.listing}`}>
+                    Listar Administradores
+                </button>
+
+                <button onClick={handleLogout} className={`${styles.sidebarButton} ${styles.logout}`}>
+                        Sair
+                </button>
+                
+            </div>
+            <div className={styles.mainContent}>
+                <h1 className={styles.title}>Área do Administrador</h1>
+                <p className={styles.description}>
+                    Aqui você pode gerenciar os animais disponíveis para adoção e administrar os cadastros.
+                </p>
+                <div className={styles.infoCards}>
+                    <div className={styles.card}>
+                        <h3>Total de Animais</h3>
+                        <p>12 disponíveis</p>
+                    </div>
+                    <div className={styles.card}>
+                        <h3>Adoções Realizadas</h3>
+                        <p>5 este mês</p>
+                    </div>
+                    <div className={styles.card}>
+                        <h3>Novos Cadastros</h3>
+                        <p>2 administradores</p>
+                    </div>
+
+                </div>
             </div>
         </div>
     );
