@@ -1,4 +1,3 @@
-// pages/admin/register-animal.js
 import React, { useState } from 'react';
 import axios from 'axios'; // Para fazer requisições HTTP
 import { useRouter } from 'next/router'; // Importando o hook useRouter
@@ -119,8 +118,8 @@ const RegisterAnimal = () => {
                             <option value="Macho">Macho</option>
                             <option value="Fêmea">Fêmea</option>
                         </select>
-                        
                     </div>
+
                     <div className={styles.formGroup}>
                         <label htmlFor="descricao">Descrição</label>
                         <textarea
@@ -130,6 +129,7 @@ const RegisterAnimal = () => {
                             onChange={handleChange}
                         />
                     </div>
+
                     <div className={styles.formGroup}>
                         <label htmlFor="foto">Foto</label>
                         <input
@@ -139,9 +139,13 @@ const RegisterAnimal = () => {
                             onChange={handleFileChange}
                         />
                     </div>
-                    <button type="submit" className={styles.submitButton}>Cadastrar</button>
+
+                    {/* Botões de ação */}
+                    <div className={styles.buttonContainer}>
+                        <button onClick={handleGoBack} className={styles.backButton}>Voltar</button>
+                        <button type="submit" className={styles.submitButton}>Cadastrar</button>
+                    </div>
                 </form>
-                <button onClick={handleGoBack} className={styles.submitButton}>Voltar</button>
             </section>
         </div>
     );

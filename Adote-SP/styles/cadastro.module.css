@@ -1,5 +1,10 @@
 .pageBackground {
-    background-color: #00686C; /* Cor de fundo da página */
+    background: linear-gradient(to bottom, 
+    #00686b 0%, 
+    #00686b 25%, 
+    #017f81 60%, 
+    #f5fafc 100%
+    ); /* Cor de fundo da página */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,6 +23,8 @@
 }
 
 .cadastro h2 {
+    font-family: "Lilita One", sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
     font-size: 2.5rem;
     color: #ff9915;
     margin-bottom: 20px;
@@ -34,10 +41,11 @@
 }
 
 .formGroup label {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: block;
     margin-bottom: 8px;  
-    font-size: 1.1rem;
-    color: #333;
+    font-size: 1.0rem;
+    color: #000000;
 }
 
 .formGroup input {
@@ -46,6 +54,15 @@
     font-size: 1.1rem; 
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+/* Estilos do contêiner dos botões */
+.buttonContainer {
+    display: flex;
+    justify-content: center; /* Centraliza os botões */
+    gap: 20px; /* Espaço entre os botões */
+    margin-top: 30px; /* Espaçamento superior */
+    width: 100%; /* Largura do contêiner */
 }
 
 /* Estilos do botão de cadastrar */
@@ -57,6 +74,8 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 150px; /* Largura fixa */
+    text-align: center;
 }
 
 .submitButton:hover {
@@ -65,21 +84,20 @@
 
 /* Estilos do botão de voltar */
 .backButton {
-    padding: 15px 40px; 
+    padding: 15px 20px;
     font-size: 1.1rem;
     color: #fff;
     background-color: #ff9915;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 20px;
-    margin-right: 85%;  
+    width: 150px; /* Largura fixa */
+    text-align: center;
 }
 
 .backButton:hover {
-    background-color: #c57702;  /* Cor de hover */
+    background-color: #c57702; 
 }
-
 
 @media (max-width: 768px) {
     .cadastro {
@@ -107,5 +125,10 @@
 
     .backButton {
         padding: 12px 35px; 
+    }
+
+    .buttonContainer {
+        flex-direction: column;
+        gap: 10px;
     }
 }

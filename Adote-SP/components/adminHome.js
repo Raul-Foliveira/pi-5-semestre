@@ -16,6 +16,14 @@ const AdminHome = () => {
         router.push('/'); // Redireciona para a página principal
     };
 
+    const handleListAdmin = () => {
+        router.push('/adminList'); // Redireciona para a página principal
+    };
+
+    const handleListAdminAnimal = () => {
+        router.push('/adminAnimalList'); // Redireciona para a página principal
+    };
+
     return (
         <div className={styles.adminHome}>
             <div className={styles.sidebar}>
@@ -28,11 +36,11 @@ const AdminHome = () => {
                     Cadastrar Novo Administrador
                 </button>
                 
-                <button className={`${styles.sidebarButton} ${styles.listing}`}>
+                <button onClick={handleListAdminAnimal} className={`${styles.sidebarButton} ${styles.listing}`}>
                         Listar Animais
                 </button>
 
-                <button className={`${styles.sidebarButton} ${styles.listing}`}>
+                <button onClick={handleListAdmin} className={`${styles.sidebarButton} ${styles.listing}`}>
                     Listar Administradores
                 </button>
 

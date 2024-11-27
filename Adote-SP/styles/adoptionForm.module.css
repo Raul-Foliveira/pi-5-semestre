@@ -1,7 +1,12 @@
 /* Página Contêiner */
 .pageContainer {
   position: relative;  /* Necessário para o posicionamento absoluto do botão */
-  background-color: #00686C;
+  background: linear-gradient(to bottom, 
+  #00686b 0%, 
+  #00686b 35%, 
+  #017f81 60%, 
+  #f5fafc 100%
+  ); /* Cor de fundo da página */
   display: flex;
   flex-direction: column;
   align-items: center;

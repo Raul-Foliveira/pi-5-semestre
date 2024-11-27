@@ -107,11 +107,11 @@ const Cadastro = () => {
                             required
                         />
                     </div>
-                    <button type="submit" className={styles.submitButton}>Cadastrar</button>
+                    <div className={styles.buttonContainer}>
+                        <button onClick={handleGoBack} className={styles.backButton}>Voltar</button>
+                        <button type="submit" className={styles.submitButton}>Cadastrar</button>
+                    </div>
                 </form>
-
-                {/* Botão para voltar à página de Admin Home (abaixo do botão de cadastrar) */}
-                <button onClick={handleGoBack} className={styles.backButton}>Voltar</button>
             </section>
         </div>
     );

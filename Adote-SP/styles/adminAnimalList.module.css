@@ -1,0 +1,91 @@
+/* styles/adminAnimalList.module.css */
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .animalTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .animalTable th, .animalTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+  }
+  
+  .animalTable th {
+    background-color: #00686b;
+    color: #fff;
+  }
+  
+  .animalTable tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .deleteButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .deleteButton:hover {
+    background-color: #d32f2f;
+  }
+  
+  .logoutButton {
+    background-color: #00686b;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .logoutButton:hover {
+    background-color: #004f4f;
+  }
+  
+  .tableContainer {
+    margin-top: 30px;
+    overflow-x: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .animalTable th, .animalTable td {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  }
+  
