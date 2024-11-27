@@ -2,8 +2,12 @@
     font-family: "Telex", sans-serif;
     display: flex;
     height: 100vh;
-    background-color: #00686C; 
-    position: relative; /* Permite a posição absoluta da imagem de patas */
+    background: linear-gradient(to bottom, 
+    #00686b 0%, 
+    #00686b 25%, 
+    #017f81 60%, 
+    #f5fafc 100%);
+     position: relative; /* Permite a posição absoluta da imagem de patas */
 }
 
 .imageContainer {
@@ -23,7 +27,6 @@
     margin: auto;
     padding: 30px;
     border-radius: 15px;
-    background-color: #00686C;
     text-shadow: 2px 2px 4px black;
     position: relative; /* Para que o ícone de patas seja posicionado em relação a este container */
 }

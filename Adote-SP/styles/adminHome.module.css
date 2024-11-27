@@ -6,7 +6,12 @@
 
 .sidebar {
     width: 250px;
-    background-color: #ff9915;
+    background: linear-gradient(to bottom, 
+    #00686b 0%, 
+    #00686b 25%, 
+    #017f81 60%, 
+    #f5fafc 100%
+    );
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -21,8 +26,8 @@
 }
 
 .sidebarButton {
-    background-color: #fff;
-    color: #ff9915;
+    background-color: #ff9915;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     padding: 12px 20px;

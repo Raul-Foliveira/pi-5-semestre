@@ -1,7 +1,12 @@
 /* banner.module.css */
 
 .banner {
-  background: linear-gradient(to bottom, #00686b, #f5fafc); /* Degradê vertical de #00686C para #50b6b9 */
+  background: linear-gradient(to bottom, 
+  #00686b 0%, 
+  #00686b 25%, 
+  #017f81 40%, 
+  #f5fafc 100%
+  );
   padding: 100px 50px;
   position: relative;
   display: flex; /* Usa flexbox para alinhar os filhos */

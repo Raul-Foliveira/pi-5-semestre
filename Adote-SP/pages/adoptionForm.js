@@ -173,9 +173,22 @@ const AdoptionForm = () => {
               <button type="submit" className={styles.submitButton}>
                 Enviar
               </button>
+
             )}
           </div>
         </form>
+        <div className={styles.lgpdNotice}>
+    <h3>Transparência no Uso de Dados</h3>
+    <p>
+        Os dados fornecidos neste formulário serão utilizados exclusivamente para o processo de adoção 
+        do animal selecionado. Garantimos que nenhuma informação será compartilhada com terceiros sem 
+        sua autorização. Seguimos as diretrizes da <strong>Lei Geral de Proteção de Dados (LGPD)</strong> 
+    </p>
+    <p>
+        Caso tenha dúvidas sobre como seus dados serão tratados, entre em contato conosco pelo e-mail: 
+        <a href="mailto:suporte@patasunidas.com"> suporte@patasunidas.com</a>.
+    </p>
+    </div>
       </div>
 
       {/* Modal de alerta */}
@@ -196,6 +209,8 @@ const AdoptionForm = () => {
         </motion.div>
       )}
     </div>
+
+    
 
   );
 };

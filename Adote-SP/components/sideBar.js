@@ -1,4 +1,4 @@
-import styles from '../styles/sidebar.module.css';
+import styles from '../styles/sideBar.module.css';
 import { useRouter } from 'next/router';
 
 const Sidebar = ({ onFilterChange }) => {

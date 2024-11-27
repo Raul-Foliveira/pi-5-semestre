@@ -88,8 +88,8 @@ const Login = () => {
 
             {/* Container do formulário de login */}
             <div className={styles.loginContainer}>
-                <h1 className={styles.welcomeTitle}>Bem-vindo!</h1>
-                <h2 className={styles.title}>Login</h2>
+                <h1 className={styles.welcomeTitle}>Login</h1>
+                <h2 className={styles.title}>Administrador</h2>
 
                 <form onSubmit={handleSubmit}>
                     <div className={styles.formGroup}>
