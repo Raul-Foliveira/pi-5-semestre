@@ -41,16 +41,37 @@
     background-color: #f1f1f1;
   }
   
-  .deleteButton {
-    background-color: #f44336;
-    color: white;
+  .actionButtons {
+    display: flex;
+    gap: 8px; /* Espaçamento entre os botões */
+  }
+
+  .editButton {
+    background-color: rgb(1, 117, 250);
+    padding: 8px 11px;
     border: none;
-    padding: 8px 16px;
-    cursor: pointer;
+    color: white;
+    font-size: 1rem;
     border-radius: 4px;
+    cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
+  .editButton:hover {
+    background-color: rgb(0, 90, 200);
+  }
+
+  .deleteButton {
+    background-color: #f44336;
+    padding: 8px 13px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
   .deleteButton:hover {
     background-color: #d32f2f;
   }

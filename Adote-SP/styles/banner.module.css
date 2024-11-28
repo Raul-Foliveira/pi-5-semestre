@@ -54,6 +54,8 @@
 }
 
 .banner button {
+  text-shadow: 1px 1px 5px black;
+  transition: background-color 0.3s, box-shadow 0.3s;
   background-color: #FF9915;
   color: white;
   padding: 15px 30px;

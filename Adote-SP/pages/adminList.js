@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/adminList.module.css';
+import { FaPencilAlt } from 'react-icons/fa';
 
 const AdminList = () => {
   const router = useRouter();
@@ -49,11 +50,23 @@ const AdminList = () => {
                 <td>{admin.name}</td>
                 <td>{admin.email}</td>
                 <td>{admin.phone}</td>
-                <td>
-                  <button onClick={() => handleDelete(admin.id)} className={styles.deleteButton}>
-                    Excluir
-                  </button>
-                </td>
+                
+                <div className={styles.actionButtons}>
+                <button
+                    onClick={() => handleEdit(admin.id)}
+                    className={styles.editButton}
+                    title="Editar"
+                    >
+                    <FaPencilAlt />
+                </button>
+                <button
+                    onClick={() => handleDelete(admin.id)}
+                    className={styles.deleteButton}
+                    title="Excluir"
+                >
+                    X
+                </button>
+              </div>
               </tr>
             ))}
           </tbody>

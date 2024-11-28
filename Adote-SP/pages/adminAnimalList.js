@@ -1,7 +1,7 @@
-// pages/adminAnimalList.js
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/adminAnimalList.module.css';
+import { FaPaw } from 'react-icons/fa'; // Ícone de pata para os animais
 
 const AdminAnimalList = () => {
   const router = useRouter();
@@ -15,12 +15,12 @@ const AdminAnimalList = () => {
 
   // Função para excluir um animal
   const handleDelete = (id) => {
-    // Simulação de exclusão com dados estáticos
-    const updatedAnimals = animals.filter(animal => animal.id !== id);
+    const updatedAnimals = animals.filter((animal) => animal.id !== id);
     setAnimals(updatedAnimals);
+  };
 
-    // Aqui, você pode adicionar a lógica para exclusão do banco de dados quando o back-end estiver pronto.
-    // Exemplo: await fetch(`/api/animals/${id}`, { method: 'DELETE' });
+  const handleEdit = (id) => {
+    alert(`Editar item com ID: ${id}`);
   };
 
   // Função para redirecionar para a tela "adminHome"
@@ -38,20 +38,35 @@ const AdminAnimalList = () => {
         <table className={styles.animalTable}>
           <thead>
             <tr>
-              <th>Nome</th>
               <th>Espécie</th>
+              <th>Nome</th>
               <th>Idade</th>
               <th>Ação</th>
             </tr>
           </thead>
           <tbody>
-            {animals.map(animal => (
+            {animals.map((animal) => (
               <tr key={animal.id}>
-                <td>{animal.name}</td>
-                <td>{animal.species}</td>
-                <td>{animal.age}</td>
                 <td>
-                  <button onClick={() => handleDelete(animal.id)} className={styles.deleteButton}>
+                  <span className={styles.icon}>
+                    <FaPaw /> {/* Ícone de pata */}
+                  </span>
+                  {animal.species}
+                </td>
+                <td>{animal.name}</td>
+                <td>{animal.age}</td>
+                <td className={styles.actionButtons}>
+                  <button
+                    onClick={() => handleEdit(animal.id)}
+                    className={styles.editButton}
+                    title="Editar"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    onClick={() => handleDelete(animal.id)}
+                    className={styles.deleteButton}
+                  >
                     Excluir
                   </button>
                 </td>

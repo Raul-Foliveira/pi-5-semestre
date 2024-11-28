@@ -5,7 +5,8 @@
 }
 
 .aboutUs h2 {
-    font-weight: bold;
+    font-family: "Lilita One", sans-serif;
+    text-shadow: 1px 1px 3px black;
     font-size: 2.5rem;
     color: #FF9915; 
     margin-bottom: 20px;

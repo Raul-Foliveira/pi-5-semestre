@@ -11,6 +11,7 @@ import AnimalButtons from '../components/animalButtons';
 
 
 
+
 export default function Home() {
   return (
     <div>
