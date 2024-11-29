@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import styles from '../styles/adoptionForm.module.css';
 
-
 const AdoptionForm = () => {
   const [step, setStep] = useState(0); // Controla o passo atual do formulário
   const [showModal, setShowModal] = useState(false); // Controla a visibilidade do modal
@@ -11,10 +10,11 @@ const AdoptionForm = () => {
 
   const questions = [
     { id: 1, question: "Qual é o seu nome completo?", inputType: "text", name: "fullName", required: true },
-    { id: 2, question: "Qual é o seu CPF?", inputType: "text", name: "cpf", required: true },
-    { id: 3, question: "Qual é o seu e-mail?", inputType: "email", name: "email", required: true },
-    { id: 4, question: "Qual é o seu telefone?", inputType: "tel", name: "phone", required: true },
-    { id: 5, question: "Por que deseja adotar este pet?", inputType: "textarea", name: "reason", required: false },
+    { id: 2, question: "Qual é o seu nome completo?", inputType: "text", name: "fullName", required: true  },
+    { id: 3, question: "Qual é o seu CPF?", inputType: "text", name: "cpf", required: true },
+    { id: 4, question: "Qual é o seu e-mail?", inputType: "email", name: "email", required: true },
+    { id: 6, question: "Qual é o seu telefone?", inputType: "tel", name: "phone", required: true },
+    { id: 7, question: "Por que deseja adotar este pet?", inputType: "textarea", name: "reason", required: false },
     {
       id: 6,
       question: "Você tem experiência em cuidar de animais?",
@@ -32,7 +32,7 @@ const AdoptionForm = () => {
       required: true
     },
     {
-      id: 8,
+      id: 8, 
       question: "Você tem disponibilidade de tempo para cuidar do pet?",
       inputType: "radio",
       name: "timeAvailability",
@@ -107,6 +107,14 @@ const AdoptionForm = () => {
     setShowModal(false);
   };
 
+  const handleAgeSelection = (age) => {
+    if (age === "Não, sou menor de 21 anos") {
+      redirectToAnimalsAvailable(); // Redireciona se menor de 21 anos
+    } else {
+      setStep(step + 1); // Avança para o próximo passo se maior de 21 anos
+    }
+  };
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.logoContainer}>
@@ -124,71 +132,111 @@ const AdoptionForm = () => {
             X
           </button>
 
-          {/* Carrossel de perguntas */}
-          <motion.div
-            key={step} // Garante que o Framer Motion anima corretamente as mudanças
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-            className={styles.questionContainer}
-          >
-            <label>{questions[step].question}</label>
-            {questions[step].inputType === "radio" ? (
-              questions[step].options.map((option, index) => (
-                <div key={index} className={styles.radioOption}>
-                  <input
-                    type="radio"
-                    id={`${questions[step].name}-${index}`}
-                    name={questions[step].name}
-                    value={option}
-                    required={questions[step].required} // Torna as opções de rádio obrigatórias
-                  />
-                  <label htmlFor={`${questions[step].name}-${index}`}>{option}</label>
-                </div>
-              ))
-            ) : questions[step].inputType === "textarea" ? (
-              <textarea name={questions[step].name} /> // Não é obrigatório para o campo de texto
-            ) : (
+          {/* Pergunta sobre a idade */}
+          {step === 0 && (
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className={styles.questionContainer}
+            >
+              <label>Você é maior de 21 anos e está ciente da legislação mínima da Patas Unidas?</label>
+              <div className={styles.radioOption}>
               <input
-                type={questions[step].inputType}
-                name={questions[step].name}
-                required={questions[step].required} // Torna os campos de texto obrigatórios
-              />
-            )}
-          </motion.div>
+                  type="radio"
+                  id="adult-no"
+                  name="age"
+                  value="Não, sou menor de 21 anos"
+                  onChange={() => handleAgeSelection("Não, sou menor de 21 anos")}
+                  required
+                />
+                <label htmlFor="adult-no">Não, sou menor de 21 anos</label>
+              </div>
+              <div className={styles.radioOption}>
+              <input
+                  type="radio"
+                  id="adult-yes"
+                  name="age"
+                  value="Sim, sou maior de 21 anos"
+                  onChange={() => handleAgeSelection("Sim, sou maior de 21 anos")}
+                  required
+                />
+                <label htmlFor="adult-yes">Sim, sou maior de 21 anos</label>
+            
+              </div>
+            </motion.div>
+          )}
+
+          {/* Carrossel de perguntas */}
+          {step > 0 && (
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              className={styles.questionContainer}
+            >
+              <label>{questions[step].question}</label>
+              {questions[step].inputType === "radio" ? (
+                questions[step].options.map((option, index) => (
+                  <div key={index} className={styles.radioOption}>
+                    <input
+                      type="radio"
+                      id={`${questions[step].name}-${index}`}
+                      name={questions[step].name}
+                      value={option}
+                      required={questions[step].required} // Torna as opções de rádio obrigatórias
+                    />
+                    <label htmlFor={`${questions[step].name}-${index}`}>{option}</label>
+                  </div>
+                ))
+              ) : questions[step].inputType === "textarea" ? (
+                <textarea name={questions[step].name} /> // Não é obrigatório para o campo de texto
+              ) : (
+                <input
+                  type={questions[step].inputType}
+                  name={questions[step].name}
+                  required={questions[step].required} // Torna os campos de texto obrigatórios
+                />
+              )}
+            </motion.div>
+          )}
 
           {/* Botões de navegação */}
-          <div className={styles.buttons}>
-            {step > 0 && (
+          {step > 0 && (
+            <div className={styles.buttons}>
               <button type="button" onClick={handlePrevious} className={styles.button}>
                 Voltar
               </button>
-            )}
-            {step < questions.length - 1 ? (
               <button type="button" onClick={handleNext} className={styles.button}>
                 Próximo
               </button>
-            ) : (
-              <button type="submit" className={styles.submitButton}>
-                Enviar
-              </button>
+            </div>
+          )}
 
-            )}
-          </div>
+          {step === questions.length && (
+            <button type="submit" className={styles.submitButton}>
+              Enviar
+            </button>
+          )}
         </form>
+
+        {/* Texto LGPD */}
         <div className={styles.lgpdNotice}>
-    <h3>Transparência no Uso de Dados</h3>
-    <p>
-        Os dados fornecidos neste formulário serão utilizados exclusivamente para o processo de adoção 
-        do animal selecionado. Garantimos que nenhuma informação será compartilhada com terceiros sem 
-        sua autorização. Seguimos as diretrizes da <strong>Lei Geral de Proteção de Dados (LGPD)</strong> 
-    </p>
-    <p>
-        Caso tenha dúvidas sobre como seus dados serão tratados, entre em contato conosco pelo e-mail: 
-        <a href="mailto:suporte@patasunidas.com"> suporte@patasunidas.com</a>.
-    </p>
-    </div>
+          <h3>Transparência no Uso de Dados</h3>
+          <p>
+            Os dados fornecidos neste formulário serão utilizados exclusivamente para o processo de adoção
+            do animal selecionado. Garantimos que nenhuma informação será compartilhada com terceiros sem
+            sua autorização. Seguimos as diretrizes da <strong>Lei Geral de Proteção de Dados (LGPD)</strong>.
+          </p>
+          <p>
+            Caso tenha dúvidas sobre como seus dados serão tratados, entre em contato conosco pelo e-mail: 
+            <a href="mailto:suporte@patasunidas.com">suporte@patasunidas.com</a>.
+          </p>
+        </div>
       </div>
 
       {/* Modal de alerta */}
@@ -209,9 +257,6 @@ const AdoptionForm = () => {
         </motion.div>
       )}
     </div>
-
-    
-
   );
 };
 

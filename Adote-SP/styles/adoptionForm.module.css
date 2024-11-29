@@ -2,9 +2,9 @@
 .pageContainer {
   position: relative;  /* Necessário para o posicionamento absoluto do botão */
   background: linear-gradient(to bottom, 
-  #00686b 0%, 
-  #00686b 35%, 
-  #017f81 60%, 
+  #00686b 20%, 
+  #00686b 45%, 
+  #017f81 55%, 
   #f5fafc 100%
   ); /* Cor de fundo da página */
   display: flex;
@@ -117,6 +117,8 @@
   width: 100%;
 }
 
+
+
 .button {
   background-color: #007bff;
   color: #fff;
@@ -134,6 +136,12 @@
   background-color: #0056b3;
 }
 
+.centeredButton {
+  display: flex;
+  justify-content: center; /* Centraliza o botão horizontalmente */
+  margin-top: 20px; /* Adiciona um espaçamento acima */
+}
+
 .submitButton {
   background-color: #28a745;
   color: #fff;
@@ -145,13 +153,31 @@
   transition: background-color 0.3s;
 }
 
-/* Estilo para as opções de radio */
-.radioOption {
-  display: inline-flex;
-  align-items: center; /* Alinha os itens verticalmente */
-  margin-right: 50px;
-  margin-left: 50px;   /* Espaçamento entre as opções */
+
+.radioContainer {
+  display: flex;
+  justify-content: center;
+  gap: 55px; /* Espaçamento entre as opções */
+  margin-top: 20px; /* Espaço acima das opções */
 }
+
+.radioContainer label {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.radioOption {
+  display: inline-block; /* Deixa os itens lado a lado */
+  margin-right: 20px; /* Espaço entre as opções */
+}
+
+.radioOption input {
+  margin-right: 10px; /* Espaço entre o input e o label */
+}
+
+
+/* Estilo para as opções de radio */
+
 
 .radioOption input {
   margin-right: 5px;    /* Espaço entre o rádio e o texto */

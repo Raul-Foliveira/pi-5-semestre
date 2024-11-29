@@ -13,3 +13,34 @@ html, body {
 p {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000;
+}
+
+/* Estilos para o modo de alto contraste */
+.highContrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.highContrast a {
+  color: #f0f0f0 !important;
+}
+
+.highContrast .animalTable th,
+.highContrast .animalTable td {
+  border-color: #fff !important;
+}
+
+.highContrast .logoutButton {
+  background-color: #f44336 !important;
+}
+
+.highContrast .contrastButton {
+  background-color: #00f !important;
+  color: #fff;
+}

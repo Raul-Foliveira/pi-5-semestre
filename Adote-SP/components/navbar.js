@@ -14,6 +14,7 @@ const Navbar = () => {
       <div className={styles.logo}>
         <Link href="/">
           <img src="/images/patasUnidas.png" alt="Patas Unidas" className={styles.logoImage} />
+      
           <span className={styles.logoText}>Patas Unidas</span>
         </Link>
       </div>

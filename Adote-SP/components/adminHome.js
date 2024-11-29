@@ -24,6 +24,10 @@ const AdminHome = () => {
         router.push('/adminAnimalList'); // Redireciona para a página principal
     };
 
+    const handleListForm = () => {
+        router.push('/adminForm'); // Redireciona para a página principal
+    };
+
     return (
         <div className={styles.adminHome}>
             <div className={styles.sidebar}>
@@ -42,6 +46,10 @@ const AdminHome = () => {
 
                 <button onClick={handleListAdmin} className={`${styles.sidebarButton} ${styles.listing}`}>
                     Listar Administradores
+                </button>
+
+                <button onClick={handleListForm} className={`${styles.sidebarButton} ${styles.listing}`}>
+                    Formulários pendentes
                 </button>
 
                 <button onClick={handleLogout} className={`${styles.sidebarButton} ${styles.logout}`}>
