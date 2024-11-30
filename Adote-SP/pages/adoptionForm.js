@@ -6,6 +6,7 @@ import styles from '../styles/adoptionForm.module.css';
 const AdoptionForm = () => {
   const [step, setStep] = useState(0); // Controla o passo atual do formulário
   const [showModal, setShowModal] = useState(false); // Controla a visibilidade do modal
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // Modal de sucesso
   const router = useRouter();  // Inicializa o hook do Next.js para redirecionamento
 
   const questions = [
@@ -14,69 +15,20 @@ const AdoptionForm = () => {
     { id: 3, question: "Qual é o seu CPF?", inputType: "text", name: "cpf", required: true },
     { id: 4, question: "Qual é o seu e-mail?", inputType: "email", name: "email", required: true },
     { id: 6, question: "Qual é o seu telefone?", inputType: "tel", name: "phone", required: true },
-    
     { id: 7, question: "Por que deseja adotar este pet?", inputType: "textarea", name: "reason", required: false },
-    {
-      id: 6,
-      question: "Você tem experiência em cuidar de animais?",
-      inputType: "radio",
-      name: "experience",
-      options: ["Sim", "Não"],
-      required: true
-    },
-    {
-      id: 7,
-      question: "Você possui um espaço adequado e seguro para o pet?",
-      inputType: "radio",
-      name: "space",
-      options: ["Sim", "Não"],
-      required: true
-    },
-    {
-      id: 8, 
-      question: "Você tem disponibilidade de tempo para cuidar do pet?",
-      inputType: "radio",
-      name: "timeAvailability",
-      options: ["Sim", "Não"],
-      required: true
-    },
-    {
-      id: 9,
-      question: "Você tem noção das responsabilidades envolvidas na adoção de um animal?",
-      inputType: "radio",
-      name: "responsibilities",
-      options: ["Sim", "Não"],
-      required: true
-    },
-    {
-      id: 10,
-      question: "Se você já tiver outros animais, como eles convivem com outros pets?",
-      inputType: "radio",
-      name: "petCompatibility",
-      options: ["Sim, eles são sociáveis", "Não, eles não são sociáveis"],
-      required: true
-    },
-    {
-      id: 11,
-      question: "Você concorda em seguir as orientações da organização sobre cuidados com o animal após a adoção?",
-      inputType: "radio",
-      name: "agreeToFollowGuidelines",
-      options: ["Sim", "Não"],
-      required: true
-    },
-    {
-      id: 12,
-      question: "Você concorda em fornecer atualizações periódicas sobre o bem-estar do animal após a adoção?",
-      inputType: "radio",
-      name: "agreeToProvideUpdates",
-      options: ["Sim", "Não"],
-      required: true
-    }
+    { id: 6, question: "Você tem experiência em cuidar de animais?", inputType: "radio", name: "experience", options: ["Sim", "Não"], required: true },
+    { id: 7, question: "Você possui um espaço adequado e seguro para o pet?", inputType: "radio", name: "space", options: ["Sim", "Não"], required: true },
+    { id: 8, question: "Você tem disponibilidade de tempo para cuidar do pet?", inputType: "radio", name: "timeAvailability", options: ["Sim", "Não"], required: true },
+    { id: 9, question: "Você tem noção das responsabilidades envolvidas na adoção de um animal?", inputType: "radio", name: "responsibilities", options: ["Sim", "Não"], required: true },
+    { id: 10, question: "Se você já tiver outros animais, como eles convivem com outros pets?", inputType: "radio", name: "petCompatibility", options: ["Sim, eles são sociáveis", "Não, eles não são sociáveis"], required: true },
+    { id: 11, question: "Você concorda em seguir as orientações da organização sobre cuidados com o animal após a adoção?", inputType: "radio", name: "agreeToFollowGuidelines", options: ["Sim", "Não"], required: true },
+    { id: 12, question: "Você concorda em fornecer atualizações periódicas sobre o bem-estar do animal após a adoção?", inputType: "radio", name: "agreeToProvideUpdates", options: ["Sim", "Não"], required: true }
   ];
 
   const handleNext = () => {
     const currentQuestion = questions[step];
 
+    // Verifica se a pergunta atual é obrigatória e se foi preenchida
     if (currentQuestion.required) {
       const inputElements = document.querySelectorAll(`[name="${currentQuestion.name}"]`);
       const isValid = Array.from(inputElements).some(input => input.checked || input.value);
@@ -86,7 +38,9 @@ const AdoptionForm = () => {
       }
     }
 
-    if (step < questions.length - 1) setStep(step + 1);
+    if (step < questions.length - 1) {
+      setStep(step + 1); // Avança para a próxima pergunta
+    }
   };
 
   const handlePrevious = () => {
@@ -95,7 +49,7 @@ const AdoptionForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Formulário enviado com sucesso!");
+    setShowSuccessModal(true); // Exibe o modal de sucesso após o envio
   };
 
   // Função para redirecionar para a tela de "animais-disponiveis"
@@ -114,6 +68,12 @@ const AdoptionForm = () => {
     } else {
       setStep(step + 1); // Avança para o próximo passo se maior de 21 anos
     }
+  };
+
+  // Função para redirecionar para o banner após o envio
+  const handleSuccessModalClose = () => {
+    router.push('/animais-disponiveis'); // Redireciona para o Banner
+    setShowSuccessModal(false); // Fecha o modal de sucesso
   };
 
   return (
@@ -143,9 +103,10 @@ const AdoptionForm = () => {
               transition={{ duration: 0.5 }}
               className={styles.questionContainer}
             >
+              <div className={styles.questionNumber}>1</div> {/* Número da pergunta */}
               <label>Você é maior de 21 anos e está ciente da legislação mínima da Patas Unidas?</label>
               <div className={styles.radioOption}>
-              <input
+                <input
                   type="radio"
                   id="adult-no"
                   name="age"
@@ -156,7 +117,7 @@ const AdoptionForm = () => {
                 <label htmlFor="adult-no">Não, sou menor de 21 anos</label>
               </div>
               <div className={styles.radioOption}>
-              <input
+                <input
                   type="radio"
                   id="adult-yes"
                   name="age"
@@ -165,13 +126,12 @@ const AdoptionForm = () => {
                   required
                 />
                 <label htmlFor="adult-yes">Sim, sou maior de 21 anos</label>
-            
               </div>
             </motion.div>
           )}
 
           {/* Carrossel de perguntas */}
-          {step > 0 && (
+          {step > 0 && step < questions.length && (
             <motion.div
               key={step}
               initial={{ opacity: 0, x: 100 }}
@@ -180,6 +140,7 @@ const AdoptionForm = () => {
               transition={{ duration: 0.5 }}
               className={styles.questionContainer}
             >
+              <div className={styles.questionNumber}>{step + 1}</div> {/* Número da pergunta */}
               <label>{questions[step].question}</label>
               {questions[step].inputType === "radio" ? (
                 questions[step].options.map((option, index) => (
@@ -206,56 +167,52 @@ const AdoptionForm = () => {
             </motion.div>
           )}
 
+          {/* Contador de perguntas */}
+          <div className={styles.counter}>
+            {step + 1} de {questions.length}
+          </div>
+
           {/* Botões de navegação */}
-          {step > 0 && (
+          {step > 0 && step < questions.length - 1 && (
             <div className={styles.buttons}>
               <button type="button" onClick={handlePrevious} className={styles.button}>
                 Voltar
               </button>
               <button type="button" onClick={handleNext} className={styles.button}>
-                Próximo
+                Próxima
               </button>
             </div>
           )}
 
-          {step === questions.length && (
+          {/* Botão de envio */}
+          {step === questions.length - 1 && (
             <button type="submit" className={styles.submitButton}>
-              Enviar
+              Enviar Formulário
             </button>
           )}
         </form>
-
-        {/* Texto LGPD */}
-        <div className={styles.lgpdNotice}>
-          <h3>Transparência no Uso de Dados</h3>
-          <p>
-            Os dados fornecidos neste formulário serão utilizados exclusivamente para o processo de adoção
-            do animal selecionado. Garantimos que nenhuma informação será compartilhada com terceiros sem
-            sua autorização. Seguimos as diretrizes da <strong>Lei Geral de Proteção de Dados (LGPD)</strong>.
-          </p>
-          <p>
-            Caso tenha dúvidas sobre como seus dados serão tratados, entre em contato conosco pelo e-mail: 
-            <a href="mailto:suporte@patasunidas.com">suporte@patasunidas.com</a>.
-          </p>
-        </div>
       </div>
 
-      {/* Modal de alerta */}
-      {showModal && (
-        <motion.div
-          className={styles.modal}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3 }}
-        >
+      {/* Modal de sucesso */}
+      {showSuccessModal && (
+        <div className={styles.modal}>
           <div className={styles.modalContent}>
-            <p>Por favor, responda a pergunta obrigatória.</p>
-            <button onClick={closeModal} className={styles.closeModalButton}>
-              Fechar
-            </button>
+            <h2>Formulário Enviado com Sucesso!</h2>
+            <p>Seu formulário foi enviado corretamente. Agora, você pode sair.</p>
+            <button onClick={handleSuccessModalClose} className={styles.button}>Sair</button>
           </div>
-        </motion.div>
+        </div>
+      )}
+
+      {/* Modal de erro */}
+      {showModal && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h2>Preencha a pergunta obrigatória</h2>
+            <p>Por favor, complete todos os campos obrigatórios antes de continuar.</p>
+            <button onClick={closeModal} className={styles.button}>Fechar</button>
+          </div>
+        </div>
       )}
     </div>
   );
