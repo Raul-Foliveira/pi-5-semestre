@@ -94,12 +94,23 @@ const RegisterAnimal = () => {
                     </div>
                 
                     <div className={styles.formGroup}>
-                        <label htmlFor="idade">Idade</label>
+                        <label htmlFor="data">Idade (Não obrigatório)</label>
                         <input
                             type="number"
                             id="idade"
                             name="idade"
                             value={formData.idade}
+                            onChange={handleChange}
+                        />
+                    </div>
+
+                    <div className={styles.formGroup}>
+                        <label htmlFor="data-cadastro">Data de cadastro</label>
+                        <input
+                            type="number"
+                            id="cadastro"
+                            name="cadastro"
+                            value={formData.cadastro}
                             onChange={handleChange}
                             required
                         />

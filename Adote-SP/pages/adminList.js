@@ -13,14 +13,30 @@ const AdminList = () => {
     { id: 3, name: 'Carlos Lima', email: 'carlos@email.com', phone: '(11) 97777-7777' },
   ]);
 
+  const [editingAdmin, setEditingAdmin] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [adminData, setAdminData] = useState({ name: '', email: '', phone: '' });
+
+  // Função para editar um administrador
+  const handleEdit = (admin) => {
+    setEditingAdmin(admin.id);
+    setAdminData(admin);
+    setShowModal(true);
+  };
+
+  // Função para atualizar um administrador após edição
+  const handleUpdate = () => {
+    const updatedAdmins = admins.map((admin) =>
+      admin.id === editingAdmin ? { ...admin, ...adminData } : admin
+    );
+    setAdmins(updatedAdmins);
+    setShowModal(false);
+  };
+
   // Função para excluir um administrador
   const handleDelete = (id) => {
-    // Simulação de exclusão com dados estáticos
     const updatedAdmins = admins.filter(admin => admin.id !== id);
     setAdmins(updatedAdmins);
-
-    // Aqui, você pode adicionar a lógica para exclusão do banco de dados quando o back-end estiver pronto.
-    // Exemplo: await fetch(`/api/admins/${id}`, { method: 'DELETE' });
   };
 
   // Função para redirecionar para a tela "adminHome"
@@ -31,9 +47,6 @@ const AdminList = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Lista de Administradores</h1>
-      <button onClick={handleLogout} className={styles.logoutButton}>
-        Sair
-      </button>
       <div className={styles.tableContainer}>
         <table className={styles.adminTable}>
           <thead>
@@ -50,28 +63,61 @@ const AdminList = () => {
                 <td>{admin.name}</td>
                 <td>{admin.email}</td>
                 <td>{admin.phone}</td>
-                
-                <div className={styles.actionButtons}>
-                <button
-                    onClick={() => handleEdit(admin.id)}
+                <td className={styles.actionButtons}>
+                  <button
+                    onClick={() => handleEdit(admin)}
                     className={styles.editButton}
                     title="Editar"
-                    >
+                  >
                     <FaPencilAlt />
-                </button>
-                <button
+                  </button>
+                  <button
                     onClick={() => handleDelete(admin.id)}
                     className={styles.deleteButton}
                     title="Excluir"
-                >
+                  >
                     X
-                </button>
-              </div>
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      {showModal && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <button className={styles.closeButton} onClick={() => setShowModal(false)}>X</button>
+            <h2 className={styles.modalTitle}>Editar Administrador</h2>
+            <form className={styles.form}>
+              <label>Nome</label>
+              <input
+                type="text"
+                value={adminData.name}
+                onChange={(e) => setAdminData({ ...adminData, name: e.target.value })}
+              />
+              <label>E-mail</label>
+              <input
+                type="email"
+                value={adminData.email}
+                onChange={(e) => setAdminData({ ...adminData, email: e.target.value })}
+              />
+              <label>Telefone</label>
+              <input
+                type="text"
+                value={adminData.phone}
+                onChange={(e) => setAdminData({ ...adminData, phone: e.target.value })}
+              />
+              <button type="button" className={styles.saveButton} onClick={handleUpdate}>Salvar</button>
+            </form>
+          </div>
+        </div>
+      )}
+      
+      <button onClick={handleLogout} className={styles.logoutButton}>
+        Sair
+      </button>
     </div>
   );
 };

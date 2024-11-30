@@ -14,6 +14,7 @@ const AdoptionForm = () => {
     { id: 3, question: "Qual é o seu CPF?", inputType: "text", name: "cpf", required: true },
     { id: 4, question: "Qual é o seu e-mail?", inputType: "email", name: "email", required: true },
     { id: 6, question: "Qual é o seu telefone?", inputType: "tel", name: "phone", required: true },
+    
     { id: 7, question: "Por que deseja adotar este pet?", inputType: "textarea", name: "reason", required: false },
     {
       id: 6,

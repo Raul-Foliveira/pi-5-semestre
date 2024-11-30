@@ -1,0 +1,151 @@
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #000000;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .description {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .formsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .formsTable th, .formsTable td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+  }
+  
+  .formsTable th {
+    background-color: #00686b;
+    color: #fff;
+  }
+  
+  .formsTable tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .actionButtons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .editButton {
+    background-color: rgb(1, 117, 250);
+    padding: 8px 11px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .editButton:hover {
+    background-color: rgb(0, 90, 200);
+  }
+  
+  .completeButton {
+    background-color: #4caf50;
+    padding: 8px 11px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .completeButton:hover {
+    background-color: #388e3c;
+  }
+  
+  .deleteButton {
+    background-color: #f44336;
+    padding: 8px 14px;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .deleteButton:hover {
+    background-color: #d32f2f;
+  }
+  
+  .tableContainer {
+    margin-top: 30px;
+    overflow-x: auto;
+  }
+
+  /* Outras classes existentes */
+
+.logoutButton {
+    background-color: #00686b;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 20px auto; /* Centraliza o botão */
+  }
+  
+  .logoutButton:hover {
+    background-color: #004f4f;
+  }
+  
+
+  /* Outras classes existentes */
+/* Outras classes existentes */
+
+.completedRow {
+    background-color: #d4edda; /* Verde claro */
+    color: #155724; /* Texto verde escuro */
+  }
+  
+  .completedRow td {
+    font-weight: bold;
+  }
+  
+
+  
+  
+  @media (max-width: 768px) {
+    .formsTable th, .formsTable td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+  
+    .title {
+        font-size: 1.5rem;
+    }
+  } 
+  

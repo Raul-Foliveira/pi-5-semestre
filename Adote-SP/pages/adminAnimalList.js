@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/adminAnimalList.module.css';
 import { FaPaw } from 'react-icons/fa'; // Ícone de pata para os animais
+import { FaPencilAlt } from 'react-icons/fa';
 
 const AdminAnimalList = () => {
   const router = useRouter();
@@ -25,19 +26,18 @@ const AdminAnimalList = () => {
     setAnimals(updatedAnimals);
   };
 
-  // Função para abrir o modal de edição
+
   const handleEdit = (animal) => {
     setCurrentAnimal(animal);
     setShowModal(true);
   };
 
-  // Função para salvar a edição do animal
   const handleSaveEdit = () => {
     const updatedAnimals = animals.map((animal) =>
       animal.id === currentAnimal.id ? currentAnimal : animal
     );
     setAnimals(updatedAnimals);
-    setShowModal(false); // Fechar o modal após salvar
+    setShowModal(false); 
   };
 
   // Função para atualizar os campos do animal no modal
@@ -60,6 +60,7 @@ const AdminAnimalList = () => {
   };
 
   return (
+    
     <div className={styles.container}>
     <h1 className={styles.title}>Lista de Animais</h1>
     <p className={styles.description}>
@@ -97,13 +98,13 @@ const AdminAnimalList = () => {
                   className={styles.editButton}
                   title="Editar"
                 >
-                  Editar
+                 <FaPencilAlt />
                 </button>
                 <button
                   onClick={() => handleDelete(animal.id)}
                   className={styles.deleteButton}
                 >
-                  Excluir
+                  X
                 </button>
               </td>
             </tr>

@@ -1,4 +1,5 @@
 // components/Footer.js
+import Link from 'next/link'; // Importação do Link do Next.js
 import styles from '../styles/footer.module.css';
 
 const Footer = () => {
@@ -15,9 +16,11 @@ const Footer = () => {
         <div className={styles.quickLinks}>
           <h4>Links Rápidos</h4>
           <ul>
-            <li><a href="#">Termos de Uso</a></li>
-            <li><a href="#">Política de Privacidade</a></li>
-            <li><a href="#">Perguntas Frequentes</a></li>
+            <ul>
+              <li><Link href="/politicas">Termos de Uso / Politica de privacidade / FAQ</Link></li>
+            </ul>
+
+
           </ul>
         </div>
         <div className={styles.contactInfo}>

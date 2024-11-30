@@ -25,7 +25,7 @@ const AdminHome = () => {
     };
 
     const handleListForm = () => {
-        router.push('/adminForm'); // Redireciona para a página principal
+        router.push('/pendingForms'); // Redireciona para a página principal
     };
 
     return (
