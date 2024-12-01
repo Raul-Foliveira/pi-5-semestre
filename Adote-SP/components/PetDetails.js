@@ -8,6 +8,7 @@ const PetDetails = () => {
     const router = useRouter();
     const { id } = router.query;
 
+    // Função para buscar os detalhes do pet
     useEffect(() => {
         if (!id) return;
 
@@ -26,13 +27,21 @@ const PetDetails = () => {
         fetchPetDetails();
     }, [id]);
 
+    // Se estiver carregando, exibe mensagem de carregamento
     if (loading) {
         return <div>Carregando detalhes do pet...</div>;
     }
 
+    // Se o pet não for encontrado, exibe mensagem de erro
     if (!pet) {
         return <div>Animal não encontrado.</div>;
     }
+
+    // Função chamada ao clicar no botão Adotar
+    const handleAdopt = () => {
+        // Redireciona para a página de formulários pendentes
+        router.push('/adoptionForm'); // Altere a URL conforme necessário
+    };
 
     return (
         <div className={styles.petDetails}>
@@ -47,7 +56,7 @@ const PetDetails = () => {
             <p><strong>Descrição:</strong> {pet.descricao}</p>
             <p><strong>Localização:</strong> {pet.localizacao}</p>
            
-            <button className={styles.adoptButton}>Adotar</button>
+            <button className={styles.adoptButton} onClick={handleAdopt}>Adotar</button>
         </div>
     );
 };

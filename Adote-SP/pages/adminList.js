@@ -1,45 +1,87 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styles from '../styles/adminList.module.css';
 import { FaPencilAlt } from 'react-icons/fa';
+import axios from 'axios';
 
 const AdminList = () => {
   const router = useRouter();
   
-  // Dados estáticos de administradores (exemplo)
-  const [admins, setAdmins] = useState([
-    { id: 1, name: 'Raul Silva', email: 'raul@email.com', phone: '(11) 99999-9999' },
-    { id: 2, name: 'Ana Souza', email: 'ana@email.com', phone: '(11) 98888-8888' },
-    { id: 3, name: 'Carlos Lima', email: 'carlos@email.com', phone: '(11) 97777-7777' },
-  ]);
-
+  const [admins, setAdmins] = useState([]);
   const [editingAdmin, setEditingAdmin] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [adminData, setAdminData] = useState({ name: '', email: '', phone: '' });
+  const [confirmDelete, setConfirmDelete] = useState(false);
 
-  // Função para editar um administrador
+  // Função para buscar administradores
+  const fetchAdmins = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:5000/admins');
+      setAdmins(response.data);
+    } catch (error) {
+      console.error('Erro ao buscar administradores', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAdmins();
+  }, []);
+
   const handleEdit = (admin) => {
-    setEditingAdmin(admin.id);
-    setAdminData(admin);
+    setEditingAdmin(admin.id_admin);
+    setAdminData({ name: admin.nome, email: admin.email, phone: admin.telefone });
     setShowModal(true);
   };
 
-  // Função para atualizar um administrador após edição
-  const handleUpdate = () => {
-    const updatedAdmins = admins.map((admin) =>
-      admin.id === editingAdmin ? { ...admin, ...adminData } : admin
-    );
-    setAdmins(updatedAdmins);
-    setShowModal(false);
+  const handleUpdate = async () => {
+    if (!adminData.name || !adminData.email || !adminData.phone) {
+      alert('Todos os campos (nome, email, telefone) são obrigatórios.');
+      return;
+    }
+
+    try {
+      console.log('Enviando dados para atualização:', adminData); // Debug: Verifique os dados
+
+      // Envia a requisição PUT para o backend
+      await axios.put(`http://127.0.0.1:5000/admins/${editingAdmin}`, {
+        nome: adminData.name,
+        email: adminData.email,
+        telefone: adminData.phone
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      // Atualiza a lista no frontend
+      setAdmins(admins.map((admin) =>
+        admin.id_admin === editingAdmin ? { ...admin, ...adminData } : admin
+      ));
+      setShowModal(false); // Fecha o modal
+
+      // Atualiza a página
+      router.reload(); // Força o recarregamento da página para buscar os dados atualizados
+    } catch (error) {
+      console.error('Erro ao atualizar administrador', error);
+      if (error.response) {
+        alert(`Erro: ${error.response.data.error}`); // Exibe a mensagem de erro do backend
+      } else {
+        alert('Erro desconhecido ao tentar atualizar o administrador.');
+      }
+    }
   };
 
-  // Função para excluir um administrador
-  const handleDelete = (id) => {
-    const updatedAdmins = admins.filter(admin => admin.id !== id);
-    setAdmins(updatedAdmins);
+  const handleDelete = async (id) => {
+    try {
+      // Excluir o administrador do backend
+      await axios.delete(`http://127.0.0.1:5000/admins/${id}`);
+      // Atualiza a lista de administradores no frontend
+      setAdmins(admins.filter(admin => admin.id_admin !== id));
+    } catch (error) {
+      console.error('Erro ao excluir administrador', error);
+    }
   };
 
-  // Função para redirecionar para a tela "adminHome"
   const handleLogout = () => {
     router.push('/admin');
   };
@@ -59,10 +101,10 @@ const AdminList = () => {
           </thead>
           <tbody>
             {admins.map(admin => (
-              <tr key={admin.id}>
-                <td>{admin.name}</td>
+              <tr key={admin.id_admin}>
+                <td>{admin.nome}</td>
                 <td>{admin.email}</td>
-                <td>{admin.phone}</td>
+                <td>{admin.telefone}</td>
                 <td className={styles.actionButtons}>
                   <button
                     onClick={() => handleEdit(admin)}
@@ -72,7 +114,7 @@ const AdminList = () => {
                     <FaPencilAlt />
                   </button>
                   <button
-                    onClick={() => handleDelete(admin.id)}
+                    onClick={() => handleDelete(admin.id_admin)}
                     className={styles.deleteButton}
                     title="Excluir"
                   >
@@ -85,6 +127,7 @@ const AdminList = () => {
         </table>
       </div>
 
+      {/* Modal de Edição */}
       {showModal && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
@@ -115,6 +158,7 @@ const AdminList = () => {
         </div>
       )}
       
+      {/* Botão de Logout */}
       <button onClick={handleLogout} className={styles.logoutButton}>
         Sair
       </button>

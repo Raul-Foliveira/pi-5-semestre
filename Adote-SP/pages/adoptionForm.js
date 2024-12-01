@@ -9,13 +9,28 @@ const AdoptionForm = () => {
   const [showSuccessModal, setShowSuccessModal] = useState(false); // Modal de sucesso
   const router = useRouter();  // Inicializa o hook do Next.js para redirecionamento
 
+  const [formData, setFormData] = useState({
+    fullName: '',
+    cpf: '',
+    email: '',
+    phone: '',
+    reason: '',
+    experience: '',
+    space: '',
+    timeAvailability: '',
+    responsibilities: '',
+    petCompatibility: '',
+    agreeToFollowGuidelines: '',
+    agreeToProvideUpdates: '',
+    age: '',
+  });
+
   const questions = [
     { id: 1, question: "Qual é o seu nome completo?", inputType: "text", name: "fullName", required: true },
-    { id: 2, question: "Qual é o seu nome completo?", inputType: "text", name: "fullName", required: true  },
-    { id: 3, question: "Qual é o seu CPF?", inputType: "text", name: "cpf", required: true },
-    { id: 4, question: "Qual é o seu e-mail?", inputType: "email", name: "email", required: true },
-    { id: 6, question: "Qual é o seu telefone?", inputType: "tel", name: "phone", required: true },
-    { id: 7, question: "Por que deseja adotar este pet?", inputType: "textarea", name: "reason", required: false },
+    { id: 2, question: "Qual é o seu CPF?", inputType: "text", name: "cpf", required: true },
+    { id: 3, question: "Qual é o seu e-mail?", inputType: "email", name: "email", required: true },
+    { id: 4, question: "Qual é o seu telefone?", inputType: "tel", name: "phone", required: true },
+    { id: 5, question: "Por que deseja adotar este pet?", inputType: "textarea", name: "reason", required: false },
     { id: 6, question: "Você tem experiência em cuidar de animais?", inputType: "radio", name: "experience", options: ["Sim", "Não"], required: true },
     { id: 7, question: "Você possui um espaço adequado e seguro para o pet?", inputType: "radio", name: "space", options: ["Sim", "Não"], required: true },
     { id: 8, question: "Você tem disponibilidade de tempo para cuidar do pet?", inputType: "radio", name: "timeAvailability", options: ["Sim", "Não"], required: true },
@@ -27,19 +42,15 @@ const AdoptionForm = () => {
 
   const handleNext = () => {
     const currentQuestion = questions[step];
+    const isValid = formData[currentQuestion.name] !== "" || (currentQuestion.inputType === "radio" && formData[currentQuestion.name] !== "");
 
-    // Verifica se a pergunta atual é obrigatória e se foi preenchida
-    if (currentQuestion.required) {
-      const inputElements = document.querySelectorAll(`[name="${currentQuestion.name}"]`);
-      const isValid = Array.from(inputElements).some(input => input.checked || input.value);
-      if (!isValid) {
-        setShowModal(true); // Exibe o modal caso a pergunta obrigatória não tenha resposta
-        return; // Impede a navegação para a próxima pergunta
-      }
+    if (currentQuestion.required && !isValid) {
+      setShowModal(true);
+      return; // Impede a navegação para a próxima pergunta
     }
 
     if (step < questions.length - 1) {
-      setStep(step + 1); // Avança para a próxima pergunta
+      setStep(step + 1);
     }
   };
 
@@ -52,40 +63,41 @@ const AdoptionForm = () => {
     setShowSuccessModal(true); // Exibe o modal de sucesso após o envio
   };
 
-  // Função para redirecionar para a tela de "animais-disponiveis"
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({ ...prevData, [name]: value }));
+  };
+
   const redirectToAnimalsAvailable = () => {
     router.push('/animais-disponiveis');
   };
 
-  // Função para fechar o modal
   const closeModal = () => {
     setShowModal(false);
   };
 
   const handleAgeSelection = (age) => {
+    setFormData(prevData => ({ ...prevData, age }));
     if (age === "Não, sou menor de 21 anos") {
       redirectToAnimalsAvailable(); // Redireciona se menor de 21 anos
     } else {
-      setStep(step + 1); // Avança para o próximo passo se maior de 21 anos
+      setStep(1); // Avança para o próximo passo se maior de 21 anos
     }
   };
 
-  // Função para redirecionar para o banner após o envio
   const handleSuccessModalClose = () => {
     router.push('/animais-disponiveis'); // Redireciona para o Banner
-    setShowSuccessModal(false); // Fecha o modal de sucesso
+    setShowSuccessModal(false);
   };
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.logoContainer}>
-        {/* Logo do formulário */}
         <img src="/images/patasUnidas.png" alt="Logo" className={styles.logo} />
       </div>
 
       <div className={styles.formContainer}>
         <form onSubmit={handleSubmit}>
-          {/* Botão "X" para fechar */}
           <button 
             className={styles.closeButton} 
             onClick={redirectToAnimalsAvailable}
@@ -93,7 +105,6 @@ const AdoptionForm = () => {
             X
           </button>
 
-          {/* Pergunta sobre a idade */}
           {step === 0 && (
             <motion.div
               key={step}
@@ -103,7 +114,7 @@ const AdoptionForm = () => {
               transition={{ duration: 0.5 }}
               className={styles.questionContainer}
             >
-              <div className={styles.questionNumber}>1</div> {/* Número da pergunta */}
+              <div className={styles.questionNumber}>1</div>
               <label>Você é maior de 21 anos e está ciente da legislação mínima da Patas Unidas?</label>
               <div className={styles.radioOption}>
                 <input
@@ -130,7 +141,6 @@ const AdoptionForm = () => {
             </motion.div>
           )}
 
-          {/* Carrossel de perguntas */}
           {step > 0 && step < questions.length && (
             <motion.div
               key={step}
@@ -140,7 +150,7 @@ const AdoptionForm = () => {
               transition={{ duration: 0.5 }}
               className={styles.questionContainer}
             >
-              <div className={styles.questionNumber}>{step + 1}</div> {/* Número da pergunta */}
+              <div className={styles.questionNumber}>{step + 1}</div>
               <label>{questions[step].question}</label>
               {questions[step].inputType === "radio" ? (
                 questions[step].options.map((option, index) => (
@@ -150,67 +160,50 @@ const AdoptionForm = () => {
                       id={`${questions[step].name}-${index}`}
                       name={questions[step].name}
                       value={option}
-                      required={questions[step].required} // Torna as opções de rádio obrigatórias
+                      onChange={handleChange}
+                      required={questions[step].required}
                     />
                     <label htmlFor={`${questions[step].name}-${index}`}>{option}</label>
                   </div>
                 ))
-              ) : questions[step].inputType === "textarea" ? (
-                <textarea name={questions[step].name} /> // Não é obrigatório para o campo de texto
               ) : (
                 <input
                   type={questions[step].inputType}
                   name={questions[step].name}
-                  required={questions[step].required} // Torna os campos de texto obrigatórios
+                  value={formData[questions[step].name]}
+                  onChange={handleChange}
+                  required={questions[step].required}
+                  className={styles.inputField}
                 />
               )}
             </motion.div>
           )}
 
-          {/* Contador de perguntas */}
-          <div className={styles.counter}>
-            {step + 1} de {questions.length}
-          </div>
-
-          {/* Botões de navegação */}
-          {step > 0 && step < questions.length - 1 && (
-            <div className={styles.buttons}>
-              <button type="button" onClick={handlePrevious} className={styles.button}>
-                Voltar
-              </button>
-              <button type="button" onClick={handleNext} className={styles.button}>
-                Próxima
-              </button>
-            </div>
-          )}
-
-          {/* Botão de envio */}
-          {step === questions.length - 1 && (
-            <button type="submit" className={styles.submitButton}>
-              Enviar Formulário
+          <div className={styles.buttonsContainer}>
+            <button type="button" onClick={handlePrevious} disabled={step === 0}>
+              Voltar
             </button>
-          )}
+            <button type="button" onClick={handleNext}>
+              {step === questions.length - 1 ? 'Finalizar' : 'Próximo'}
+            </button>
+          </div>
         </form>
       </div>
 
-      {/* Modal de sucesso */}
-      {showSuccessModal && (
+      {showModal && (
         <div className={styles.modal}>
           <div className={styles.modalContent}>
-            <h2>Formulário Enviado com Sucesso!</h2>
-            <p>Seu formulário foi enviado corretamente. Agora, você pode sair.</p>
-            <button onClick={handleSuccessModalClose} className={styles.button}>Sair</button>
+            <p>Por favor, preencha todos os campos obrigatórios!</p>
+            <button onClick={closeModal}>Fechar</button>
           </div>
         </div>
       )}
 
-      {/* Modal de erro */}
-      {showModal && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <h2>Preencha a pergunta obrigatória</h2>
-            <p>Por favor, complete todos os campos obrigatórios antes de continuar.</p>
-            <button onClick={closeModal} className={styles.button}>Fechar</button>
+      {showSuccessModal && (
+        <div className={styles.successModal}>
+          <div className={styles.successModalContent}>
+            <p>Adoção concluída com sucesso!</p>
+            <button onClick={handleSuccessModalClose}>Fechar</button>
           </div>
         </div>
       )}
