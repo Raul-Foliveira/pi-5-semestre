@@ -28,6 +28,10 @@ const AdminHome = () => {
         router.push('/pendingForms'); // Redireciona para a página principal
     };
 
+    const handleHistoricoForm = () => {
+        router.push('/historicoForms'); // Redireciona para a página principal
+    };
+
     return (
         <div className={styles.adminHome}>
             <div className={styles.sidebar}>
@@ -50,6 +54,10 @@ const AdminHome = () => {
 
                 <button onClick={handleListForm} className={`${styles.sidebarButton} ${styles.listing}`}>
                     Formulários pendentes
+                </button>
+
+                <button onClick={handleHistoricoForm} className={`${styles.sidebarButton} ${styles.listing}`}>
+                    Histórico 
                 </button>
 
                 <button onClick={handleLogout} className={`${styles.sidebarButton} ${styles.logout}`}>

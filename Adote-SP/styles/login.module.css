@@ -78,11 +78,12 @@
     background-color: #FF9915;
     color: white;
     text-shadow: 1px 1px 5px black;
-    width: 100%;
+    width: 15%;
     padding: 10px;
     border-radius: 40px;
     border: none;
     cursor: pointer;
+    margin: 0px 0px 0px 43%;
     font-size: 1rem;
     transition: background-color 0.3s, transform 0.3s;
 }
@@ -120,18 +121,6 @@
     border: 1px solid #c3e6cb;
     color: #155724;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
