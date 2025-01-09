@@ -1,10 +1,9 @@
 .pageBackground {
     background: linear-gradient(to bottom, 
-    #00686b 0%, 
-    #00686b 25%, 
-    #017f81 60%, 
-    #f5fafc 100%
-    ); /* Cor de fundo da página */
+    #FFB400 0%, 
+    #FFB400 35%, 
+    #fdb91a 60%, 
+    #ffffff 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,9 +23,9 @@
 
 .cadastro h2 {
     font-family: "Lilita One", sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
-    font-size: 2.5rem;
-    color: #ff9915;
+    font-size: 2.8rem;
+    color: #005A8D;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
 }
 
@@ -70,9 +69,9 @@
     padding: 15px 20px;  
     font-size: 1.2rem;
     color: #fff;
-    background-color: #ff9915;
+    background-color: #005A8D;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     width: 150px; /* Largura fixa */
     text-align: center;
@@ -87,9 +86,9 @@
     padding: 15px 20px;
     font-size: 1.1rem;
     color: #fff;
-    background-color: #ff9915;
+    background-color: #005A8D;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     width: 150px; /* Largura fixa */
     text-align: center;

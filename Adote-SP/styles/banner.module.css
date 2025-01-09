@@ -1,11 +1,12 @@
 /* banner.module.css */
 
 .banner {
+  text-align: center;
   background: linear-gradient(to bottom, 
-  #00686b 0%, 
-  #00686b 25%, 
-  #017f81 40%, 
-  #f5fafc 100%
+  #FFB400 0%, 
+  #FFB400 25%, 
+  #fdb91a 40%, 
+  #ffffff 100%
   );
   padding: 100px 50px;
   position: relative;
@@ -21,6 +22,7 @@
 }
 
 .bannerText {
+  margin-top: 4%;
   flex: 1; /* O texto ocupa 1 parte do espaço */
   max-width: 50%; /* Limita a largura máxima do texto */
   color: #f5f5f5; /* Cor do texto para legibilidade */
@@ -28,18 +30,19 @@
 
 .bannerText h1 {
   font-family: "Lilita One", sans-serif;
-  font-size: 3rem;
+  font-size: 4rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   margin-bottom: 10px;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  
 }
 
 .bannerText h2 {
   font-family: "Lilita One", sans-serif;
-  font-size: 1.5rem;
-  margin: -20px 0 20px 0;
+  font-size: 1.9rem;
+  margin: 0px 0 20px 0;
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .bannerText p {
@@ -50,13 +53,16 @@
 }
 
 .bannerText strong {
-  color: #FF9915; /* Cor para destacar palavras importantes */
+  color: #005A8D;
 }
 
+
 .banner button {
+  display: block;
+  margin: 0 auto;
   text-shadow: 1px 1px 5px black;
   transition: background-color 0.3s, box-shadow 0.3s;
-  background-color: #FF9915;
+  background-color: #005A8D;
   color: white;
   padding: 15px 30px;
   font-size: 18px;
@@ -64,6 +70,14 @@
   cursor: pointer;
   border: none;
   transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Novo estilo para o botão em foco */
+.banner button:focus {
+  outline: 3px solid #0776f5; /* Contorno azul */
+  outline-offset: 4px;        /* Espaçamento do contorno */
+  border-radius: 6px;         /* Mantém o estilo arredondado */
+  background-color: #FF9915; /* Mantém a cor ao focar */
 }
 
 .banner button:hover {

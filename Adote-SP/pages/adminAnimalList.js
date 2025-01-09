@@ -7,7 +7,7 @@ import { FaPencilAlt } from 'react-icons/fa';
 
 const AdminAnimalList = () => {
   const router = useRouter();
-  
+
   const [animals, setAnimals] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [currentAnimal, setCurrentAnimal] = useState({ id: null, name: '', species: '', age: '', url: '', description: '' });
@@ -67,123 +67,125 @@ const AdminAnimalList = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Lista de Animais</h1>
-      <p className={styles.description}>
-        Aqui estão os animais disponíveis para adoção. Você pode editar ou excluir qualquer um deles.
-      </p>
+    <div className={styles.pageBackground}> {/* Adicionando a classe de fundo */}
+      <div className={styles.container}>
+        <h1 className={styles.title}>Lista de Animais</h1>
+        <p className={styles.description}>
+          Aqui estão os animais disponíveis para adoção. Você pode editar ou excluir qualquer um deles.
+        </p>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.animalTable}>
-          <thead>
-            <tr>
-              <th>Espécie</th>
-              <th>Nome</th>
-              <th>Idade</th>
-              <th>URL</th>
-              <th>Descrição</th>
-              <th>Ação</th>
-            </tr>
-          </thead>
-          <tbody>
-            {animals.map((animal) => (
-              <tr key={animal.id_animal}>
-                <td>
-                  <span className={styles.icon}>
-                    <FaPaw /> {/* Ícone de pata */}
-                  </span>
-                  {animal.especie}
-                </td>
-                <td>{animal.nome}</td>
-                <td>{animal.idade}</td>
-                <td><a href={animal.url} target="_blank" rel="noopener noreferrer">{animal.url}</a></td>
-                <td>{animal.descricao}</td>
-                <td className={styles.actionButtons}>
-                  <button
-                    onClick={() => handleEdit(animal)}
-                    className={styles.editButton}
-                    title="Editar"
-                  >
-                    <FaPencilAlt />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(animal.id_animal)}
-                    className={styles.deleteButton}
-                  >
-                    X
-                  </button>
-                </td>
+        <div className={styles.tableContainer}>
+          <table className={styles.animalTable}>
+            <thead>
+              <tr>
+                <th>Espécie</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>URL</th>
+                <th>Descrição</th>
+                <th>Ação</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Botão de Logout */}
-      <div className={styles.logoutContainer}>
-        <button onClick={handleLogout} className={styles.logoutButton}>
-          Sair
-        </button>
-      </div>
-
-      {/* Modal de Edição */}
-      {showModal && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <button className={styles.closeButton} onClick={closeModal}>X</button>
-            <h2 className={styles.modalTitle}>Editar Animal</h2>
-            <form className={styles.form}>
-              <label htmlFor="name">Nome:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={currentAnimal.name}
-                onChange={handleChange}
-              />
-
-              <label htmlFor="species">Espécie:</label>
-              <input
-                type="text"
-                id="species"
-                name="species"
-                value={currentAnimal.species}
-                onChange={handleChange}
-              />
-
-              <label htmlFor="age">Idade:</label>
-              <input
-                type="number"
-                id="age"
-                name="age"
-                value={currentAnimal.age}
-                onChange={handleChange}
-              />
-
-              <label htmlFor="url">URL:</label>
-              <input
-                type="text"
-                id="url"
-                name="url"
-                value={currentAnimal.url}
-                onChange={handleChange}
-              />
-
-              <label htmlFor="description">Descrição:</label>
-              <textarea
-                id="description"
-                name="description"
-                value={currentAnimal.description}
-                onChange={handleChange}
-              ></textarea>
-
-              <button type="button" onClick={handleSaveEdit} className={styles.saveButton}>
-                Salvar Alterações
-              </button>
-            </form>
-          </div>
+            </thead>
+            <tbody>
+              {animals.map((animal) => (
+                <tr key={animal.id_animal}>
+                  <td>
+                    <span className={styles.icon}>
+                      <FaPaw /> {/* Ícone de pata */}
+                    </span>
+                    {animal.especie}
+                  </td>
+                  <td>{animal.nome}</td>
+                  <td>{animal.idade}</td>
+                  <td><a href={animal.url} target="_blank" rel="noopener noreferrer">{animal.url}</a></td>
+                  <td>{animal.descricao}</td>
+                  <td className={styles.actionButtons}>
+                    <button
+                      onClick={() => handleEdit(animal)}
+                      className={styles.editButton}
+                      title="Editar"
+                    >
+                      <FaPencilAlt />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(animal.id_animal)}
+                      className={styles.deleteButton}
+                    >
+                      X
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      )}
+
+        {/* Botão de Logout */}
+        <div className={styles.logoutContainer}>
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Sair
+          </button>
+        </div>
+
+        {/* Modal de Edição */}
+        {showModal && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <button className={styles.closeButton} onClick={closeModal}>X</button>
+              <h2 className={styles.modalTitle}>Editar Animal</h2>
+              <form className={styles.form}>
+                <label htmlFor="name">Nome:</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={currentAnimal.name}
+                  onChange={handleChange}
+                />
+
+                <label htmlFor="species">Espécie:</label>
+                <input
+                  type="text"
+                  id="species"
+                  name="species"
+                  value={currentAnimal.species}
+                  onChange={handleChange}
+                />
+
+                <label htmlFor="age">Idade:</label>
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  value={currentAnimal.age}
+                  onChange={handleChange}
+                />
+
+                <label htmlFor="url">URL:</label>
+                <input
+                  type="text"
+                  id="url"
+                  name="url"
+                  value={currentAnimal.url}
+                  onChange={handleChange}
+                />
+
+                <label htmlFor="description">Descrição:</label>
+                <textarea
+                  id="description"
+                  name="description"
+                  value={currentAnimal.description}
+                  onChange={handleChange}
+                ></textarea>
+
+                <button type="button" onClick={handleSaveEdit} className={styles.saveButton}>
+                  Salvar Alterações
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

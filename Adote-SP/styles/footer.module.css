@@ -1,5 +1,5 @@
 .footer {
-  background-color: #00686C;
+  background-color: #FFB400;
   color: #fff;
   padding: 30px 20px;
   font-family: "Telex", sans-serif;
@@ -19,17 +19,23 @@
 .companyInfo, .quickLinks, .contactInfo {
   flex: 1;
   min-width: 250px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .companyInfo h4, .quickLinks h4, .contactInfo h4 {
   font-size: 18px;
-  color: #f1c40f;
+  color: white;
+  font-weight: bold;
   margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .companyInfo p, .contactInfo p {
   font-size: 14px;
   line-height: 1.6;
+  font-size: 0.9rem;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .quickLinks ul {
@@ -43,6 +49,7 @@
 }
 
 .quickLinks ul li a, .contactInfo a {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
   color: #fff;
   text-decoration: none;
   font-size: 14px;
@@ -63,6 +70,7 @@
   max-width: 1200px;
   margin: 20px auto 0 auto;
   text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .socialLinks {

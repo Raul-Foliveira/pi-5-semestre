@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #00686C;
+  background-color: #FFB400;
 }
 
 .logo {
@@ -13,17 +13,18 @@
 }
 
 .logoImage {
-  height: 90px;
+  height: 120px;
   width: auto;
   max-width: 100%; /* Responsividade para largura */
 }
 
 .logoText {
   color: white;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  font-family: "Telex", sans-serif;
-  line-height: 1;
+  font-family: "Lilita One", sans-serif;
+  font-size: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 .navLinks {

@@ -38,7 +38,7 @@ const HistoricoFormularios = () => {
   ]);
 
   // Filtrando os formulários concluídos
-  const completedForms = forms.filter(form => form.isCompleted);
+  const completedForms = forms.filter((form) => form.isCompleted);
 
   // Função para redirecionar para a página de "Formulários Pendentes"
   const handleBackToPending = () => {
@@ -46,46 +46,48 @@ const HistoricoFormularios = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Histórico de Formulários Concluídos</h1>
-      <p className={styles.description}>
-        Abaixo estão os históricos de formulários que foram concluídos.
-      </p>
+    <div className={styles.pageBackground}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Histórico de Formulários Concluídos</h1>
+        <p className={styles.description}>
+          Abaixo estão os históricos de formulários que foram concluídos.
+        </p>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.formsTable}>
-          <thead>
-            <tr>
-              <th>Nome Completo</th>
-              <th>CPF</th>
-              <th>Email</th>
-              <th>Animal Interessado</th>
-              <th>Espécie</th>
-              <th>Concluído</th> {/* Nova coluna para o ícone de check */}
-            </tr>
-          </thead>
-          <tbody>
-            {completedForms.map((form) => (
-              <tr key={form.id}>
-                <td>{form.name}</td>
-                <td>{form.cpf}</td>
-                <td>{form.email}</td>
-                <td>{form.animal}</td>
-                <td>{form.especie}</td>
-                <td>
-                  {/* Exibindo o ícone de check se o formulário foi concluído */}
-                  <FaCheck className={styles.checkIcon} title="Concluído" />
-                </td>
+        <div className={styles.tableContainer}>
+          <table className={styles.formsTable}>
+            <thead>
+              <tr>
+                <th>Nome Completo</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Animal Interessado</th>
+                <th>Espécie</th>
+                <th>Concluído</th> {/* Nova coluna para o ícone de check */}
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {completedForms.map((form) => (
+                <tr key={form.id}>
+                  <td>{form.name}</td>
+                  <td>{form.cpf}</td>
+                  <td>{form.email}</td>
+                  <td>{form.animal}</td>
+                  <td>{form.especie}</td>
+                  <td>
+                    {/* Exibindo o ícone de check se o formulário foi concluído */}
+                    <FaCheck className={styles.checkIcon} title="Concluído" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      {/* Botão de voltar para a tela de pendentes */}
-      <button onClick={handleBackToPending} className={styles.backButton}>
-        Voltar para Formulários Pendentes
-      </button>
+        {/* Botão de voltar para a tela de pendentes */}
+        <button onClick={handleBackToPending} className={styles.backButton}>
+          Voltar
+        </button>
+      </div>
     </div>
   );
 };

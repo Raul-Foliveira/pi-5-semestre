@@ -61,68 +61,70 @@ const PendingForms = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Formulários Pendentes</h1>
-      <p className={styles.description}>
-        Abaixo estão os formulários pendentes enviados pelos usuários. Você pode editá-los, marcá-los como concluídos ou excluí-los.
-      </p>
+    <div className={styles.pageBackground}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Formulários Pendentes</h1>
+        <p className={styles.description}>
+          Abaixo estão os formulários pendentes enviados pelos usuários. Você pode editá-los, marcá-los como concluídos ou excluí-los.
+        </p>
 
-      <div className={styles.tableContainer}>
-        <table className={styles.formsTable}>
-          <thead>
-            <tr>
-              <th>Nome Completo</th>
-              <th>CPF</th>
-              <th>Email</th>
-              <th>Animal Interessado</th>
-              <th>Espécie</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {forms.map((form) => (
-              <tr
-                key={form.id}
-                className={form.isCompleted ? styles.completedRow : ''}
-              >
-                <td>{form.name}</td>
-                <td>{form.cpf}</td>
-                <td>{form.email}</td>
-                <td>{form.animal}</td>
-                <td>{form.especie}</td>
-                <td className={styles.actionButtons}>
-                  <button
-                    onClick={() => handleEdit(form.id)}
-                    className={styles.editButton}
-                    title="Editar"
-                  >
-                    Editar
-                  </button>
-                  <button
-                    onClick={() => handleToggleComplete(form.id)}
-                    className={styles.completeButton}
-                    title="Concluir"
-                  >
-                    {form.isCompleted ? 'Desmarcar' : 'Concluir'}
-                  </button>
-                  <button
-                    onClick={() => handleDelete(form.id)}
-                    className={styles.deleteButton}
-                    title="Excluir"
-                  >
-                    Excluir
-                  </button>
-                </td>
+        <div className={styles.tableContainer}>
+          <table className={styles.formsTable}>
+            <thead>
+              <tr>
+                <th>Nome Completo</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Animal Interessado</th>
+                <th>Espécie</th>
+                <th>Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {forms.map((form) => (
+                <tr
+                  key={form.id}
+                  className={form.isCompleted ? styles.completedRow : ''}
+                >
+                  <td>{form.name}</td>
+                  <td>{form.cpf}</td>
+                  <td>{form.email}</td>
+                  <td>{form.animal}</td>
+                  <td>{form.especie}</td>
+                  <td className={styles.actionButtons}>
+                    <button
+                      onClick={() => handleEdit(form.id)}
+                      className={styles.editButton}
+                      title="Editar"
+                    >
+                      Editar
+                    </button>
+                    <button
+                      onClick={() => handleToggleComplete(form.id)}
+                      className={styles.completeButton}
+                      title="Concluir"
+                    >
+                      {form.isCompleted ? 'Desmarcar' : 'Concluir'}
+                    </button>
+                    <button
+                      onClick={() => handleDelete(form.id)}
+                      className={styles.deleteButton}
+                      title="Excluir"
+                    >
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-      {/* Botão de sair */}
-      <button onClick={handleLogout} className={styles.logoutButton}>
-        Sair
-      </button>
+        {/* Botão de sair */}
+        <button onClick={handleLogout} className={styles.logoutButton}>
+          Sair
+        </button>
+      </div>
     </div>
   );
 };

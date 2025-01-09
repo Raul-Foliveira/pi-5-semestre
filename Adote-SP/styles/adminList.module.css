@@ -1,4 +1,17 @@
 /* Estilos de container e tabela */
+.pageBackground {
+  background: linear-gradient(to bottom, 
+  #FFB400 0%, 
+  #FFB400 35%, 
+  #fdb91a 60%, 
+  #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  padding: 0 20px;  
+}
+
 .container {
   padding: 20px;
   max-width: 900px;
@@ -13,11 +26,11 @@
 }
 
 .title {
+  font-family: "Lilita One", sans-serif;
+  color: #005A8D;
   text-align: center;
   margin-bottom: 30px;
-  font-size: 2rem;
-  color: #333;
-  font-family: 'Arial', sans-serif;
+  font-size: 2.2rem;
 }
 
 .adminTable {
@@ -37,7 +50,9 @@
 }
 
 .adminTable th {
-  background-color: #00686b;
+  font-family: "Lilita One", sans-serif;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 2);
+  background-color: #005A8D;
   color: #fff;
 }
 
@@ -156,7 +171,7 @@
 
 /* Botão de Logout centralizado */
 .logoutButton {
-  background-color: #00686b;
+  background-color: #005A8D;
   color: white;
   padding: 10px 20px;
   font-size: 1rem;

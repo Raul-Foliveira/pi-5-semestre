@@ -1,3 +1,16 @@
+.pageBackground {
+  background: linear-gradient(to bottom, 
+  #FFB400 0%, 
+  #FFB400 35%, 
+  #fdb91a 60%, 
+  #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
+  padding: 0 20px;  
+}
+
 .container {
     margin: 20px;
     padding: 20px;
@@ -7,10 +20,11 @@
   }
   
   .title {
-    color: #333;
+    font-family: "Lilita One", sans-serif;
+    color: #005A8D;
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    font-size: 2.2rem;
   }
   
   .description {
@@ -39,7 +53,9 @@
   }
   
   .formsTable th {
-    background-color: #00686C;
+    font-family: "Lilita One", sans-serif;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 2);
+    background-color: #005A8D;
     color: white;
     font-weight: bold;
   }
@@ -57,7 +73,7 @@
     display: block;
     margin: 30px auto 0;
     padding: 10px 20px;
-    background-color: #00686C;
+    background-color: #005A8D;
     color: white;
     border: none;
     border-radius: 5px;
