@@ -1,35 +1,54 @@
+// routes/adoptionFormRoutes.js
 const express = require('express');
+const db = require('../db'); // Importa a conexão com o banco de dados
+
 const router = express.Router();
-const db = require('../db'); // Certifique-se de importar a conexão com o banco de dados
 
-// Rota para salvar o formulário de adoção no banco de dados
+// Rota para inserir dados do formulário de adoção
 router.post('/submitAdoptionForm', (req, res) => {
-    const {
-        fullName, cpf, email, phone, reason, experience, space, timeAvailability, responsibilities,
-        petCompatibility, agreeToFollowGuidelines, agreeToProvideUpdates, age
-    } = req.body;
+  const {
+    nome,
+    cpf,
+    email,
+    telefone,
+    motivo_adocao,
+    experiencia_cuidados,
+    espaco_adequado,
+    disponibilidade_tempo,
+    responsabilidades_adocao,
+    compatibilidade_animais,
+    concorda_com_orientacoes,
+    concorda_com_atualizacoes,
+    idade,
+  } = req.body;
 
-    // Prepara a consulta SQL para inserir os dados no banco
-    const query = `
-        INSERT INTO formularios_adocao 
-        (full_name, cpf, email, phone, reason, experience, space, 
-        time_availability, responsibilities, pet_compatibility, 
-        agree_to_follow_guidelines, agree_to_provide_updates, age)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+  // Validação dos dados (opcional)
+  if (!nome || !cpf || !email || !telefone) {
+    return res.status(400).json({ success: false, message: 'Campos obrigatórios não preenchidos!' });
+  }
 
-    // Executa a consulta para inserir os dados
-    db.query(query, [
-        fullName, cpf, email, phone, reason, experience, space, 
-        timeAvailability, responsibilities, petCompatibility, 
-        agreeToFollowGuidelines, agreeToProvideUpdates, age
-    ], (err, result) => {
-        if (err) {
-            console.error('Erro ao inserir o formulário de adoção: ', err);
-            return res.status(500).json({ error: 'Erro ao salvar o formulário de adoção' });
-        }
-        res.status(200).json({ message: 'Formulário de adoção enviado com sucesso!' });
-    });
+  // Query para inserir os dados
+  const query = `
+    INSERT INTO formularios_adocao 
+    (nome, cpf, email, telefone, motivo_adocao, experiencia_cuidados, espaco_adequado, 
+     disponibilidade_tempo, responsabilidades_adocao, compatibilidade_animais, concorda_com_orientacoes, 
+     concorda_com_atualizacoes, idade) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
+  const values = [
+    nome, cpf, email, telefone, motivo_adocao, experiencia_cuidados, espaco_adequado,
+    disponibilidade_tempo, responsabilidades_adocao, compatibilidade_animais, concorda_com_orientacoes,
+    concorda_com_atualizacoes, idade,
+  ];
+
+  db.query(query, values, (err, result) => {
+    if (err) {
+      console.error('Erro ao salvar dados:', err);
+      return res.status(500).json({ success: false, message: 'Erro ao salvar os dados no banco' });
+    }
+    res.json({ success: true, message: 'Formulário enviado com sucesso!' });
+  });
 });
 
+// Exporta o router para ser usado no server.js
 module.exports = router;

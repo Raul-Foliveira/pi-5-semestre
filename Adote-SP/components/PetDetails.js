@@ -46,10 +46,7 @@ const PetDetails = () => {
     return (
         <div className={styles.petDetails}>
             <h2>{pet.nome}</h2>
-            <img
-                src={pet.fotos.length > 0 ? pet.fotos[0] : '/images/default-pet.jpg'}
-                alt={pet.nome}
-            />
+            <img src="/images/jimmy.jpg" alt="Patas Unidas" className={styles.logoImage} />
             <p><strong>Espécie:</strong> {pet.especie}</p>
             <p><strong>Tamanho:</strong> {pet.tamanho}</p>
             <p><strong>Idade:</strong> {pet.idade} anos</p>
