@@ -14,14 +14,15 @@ const Sidebar = ({ onFilterChange }) => {
 
     return (
         <div className={styles.sidebar}>
-            <button className={styles.backButton} onClick={handleBackButtonClick}>
-                Voltar à página inicial
-            </button>
             <div className={styles.filterTitle}>
-                <h3>Filtrar por:</h3>
+                <h1>Menu</h1>
+                <h3>Ordenar por:</h3>
                 <button onClick={() => handleFilterClick('idade')}>Ordenar por Idade</button>
                 <button onClick={() => handleFilterClick('especie')}>Ordenar por Espécie</button>
                 <button onClick={() => handleFilterClick('')}>Limpar Filtro</button>
+                <button className={styles.backButton} onClick={handleBackButtonClick}>
+                Voltar à página inicial
+            </button>
             </div>
         </div>
     );

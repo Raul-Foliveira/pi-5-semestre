@@ -36,6 +36,12 @@ const PendingForms = () => {
     },
   ]);
 
+  // Estado para controlar o modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Estado para armazenar os dados do formulário que está sendo editado
+  const [editingForm, setEditingForm] = useState(null);
+
   // Função para alternar o estado de concluído
   const handleToggleComplete = (id) => {
     setForms(
@@ -50,14 +56,45 @@ const PendingForms = () => {
     setForms(forms.filter((form) => form.id !== id));
   };
 
-  // Função para editar
+  // Função para abrir o modal e carregar os dados do formulário selecionado
   const handleEdit = (id) => {
-    alert(`Editar formulário ID ${id}.`);
+    const formToEdit = forms.find((form) => form.id === id);
+    if (formToEdit) {
+      setEditingForm(formToEdit); // Define o formulário que está sendo editado
+      setIsModalOpen(true); // Abre o modal
+    }
+  };
+
+  // Função para concluir e redirecionar ao histórico
+  const handleConclude = (id) => {
+    const formToConclude = forms.find((form) => form.id === id);
+    if (formToConclude) {
+      console.log(`Formulário ${id} concluído!`);
+      setForms(forms.filter((form) => form.id !== id));
+      router.push('/historico');
+    }
   };
 
   // Função para redirecionar para a tela "/admin"
   const handleLogout = () => {
     router.push('/admin');
+  };
+
+  // Função para salvar as alterações do formulário
+  const handleSave = () => {
+    setForms(
+      forms.map((form) =>
+        form.id === editingForm.id ? { ...editingForm } : form
+      )
+    );
+    setIsModalOpen(false); // Fecha o modal
+    setEditingForm(null); // Reseta o estado do formulário editado
+  };
+
+  // Função para fechar o modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingForm(null);
   };
 
   return (
@@ -100,11 +137,11 @@ const PendingForms = () => {
                       Editar
                     </button>
                     <button
-                      onClick={() => handleToggleComplete(form.id)}
+                      onClick={() => handleConclude(form.id)}
                       className={styles.completeButton}
                       title="Concluir"
                     >
-                      {form.isCompleted ? 'Desmarcar' : 'Concluir'}
+                      Concluir
                     </button>
                     <button
                       onClick={() => handleDelete(form.id)}
@@ -124,6 +161,73 @@ const PendingForms = () => {
         <button onClick={handleLogout} className={styles.logoutButton}>
           Sair
         </button>
+
+        {/* Modal */}
+        {isModalOpen && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <h2>Editar Formulário</h2>
+              <label>
+                Nome Completo:
+                <input
+                  type="text"
+                  value={editingForm.name}
+                  onChange={(e) =>
+                    setEditingForm({ ...editingForm, name: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                CPF:
+                <input
+                  type="text"
+                  value={editingForm.cpf}
+                  onChange={(e) =>
+                    setEditingForm({ ...editingForm, cpf: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Email:
+                <input
+                  type="email"
+                  value={editingForm.email}
+                  onChange={(e) =>
+                    setEditingForm({ ...editingForm, email: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Animal Interessado:
+                <input
+                  type="text"
+                  value={editingForm.animal}
+                  onChange={(e) =>
+                    setEditingForm({ ...editingForm, animal: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Espécie:
+                <input
+                  type="text"
+                  value={editingForm.especie}
+                  onChange={(e) =>
+                    setEditingForm({ ...editingForm, especie: e.target.value })
+                  }
+                />
+              </label>
+              <div className={styles.modalActions}>
+                <button onClick={handleSave} className={styles.saveButton}>
+                  Salvar
+                </button>
+                <button onClick={handleCloseModal} className={styles.closeButton}>
+                  Fechar
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

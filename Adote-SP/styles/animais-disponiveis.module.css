@@ -1,4 +1,15 @@
 /* Atualização no CSS da página principal (por exemplo, no seu arquivo .module.css da página de animais) */
+.animalsPage {
+    background: linear-gradient(to bottom, 
+        #FFB400 0%, 
+        #FFB400 25%, 
+        #fdb91a 35%, 
+        #ffffff 100%);
+    min-height: 100vh; /* Garante que o degradê cubra toda a altura da página */
+    padding: 20px;
+}
+
+
 .mainContent {
     padding-left: 250px; /* Ou 200px para telas menores */
     padding-top: 20px;

@@ -93,7 +93,7 @@ const AdoptionForm = () => {
   return (
     <div className={styles.pageContainer}>
       <div className={styles.logoContainer}>
-        <img src="/images/patasUnidas.png" alt="Logo" className={styles.logo} />
+        <img src="/images/logo2.png" alt="Logo" className={styles.logo} />
       </div>
 
       <div className={styles.formContainer}>

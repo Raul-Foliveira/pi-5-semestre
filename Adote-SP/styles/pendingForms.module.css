@@ -82,6 +82,116 @@
     background-color: rgb(0, 90, 200);
   }
   
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Estilo para o conteúdo da modal */
+  .modalContent {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%; /* Responsivo para telas menores */
+    max-width: 500px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+    animation: scaleIn 0.3s ease-out; /* Animação suave ao abrir */
+  }
+  
+  /* Título da modal */
+  .modalContent h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Estilo para os labels */
+  .modalContent label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  /* Estilo para os inputs */
+  .modalContent input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+  }
+  
+  /* Efeito ao focar nos inputs */
+  .modalContent input:focus {
+    border-color: #4caf50; /* Cor verde no foco */
+  }
+  
+  /* Botões de ação na modal */
+  .modalActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* Botão Salvar */
+  .saveButton {
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Efeito hover no botão Salvar */
+  .saveButton:hover {
+    background-color: #45a049;
+  }
+  
+  /* Botão Fechar */
+  .closeButton {
+    background-color: #f44336;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  /* Efeito hover no botão Fechar */
+  .closeButton:hover {
+    background-color: #e53935;
+  }
+  
+  /* Animação de escala ao abrir a modal */
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
   .completeButton {
     background-color: #4caf50;
     padding: 8px 11px;
@@ -117,6 +227,7 @@
     overflow-x: auto;
   }
 
+  
   /* Outras classes existentes */
 
 .logoutButton {
@@ -137,6 +248,7 @@
     background-color: #004f4f;
   }
   
+
 
   /* Outras classes existentes */
 /* Outras classes existentes */

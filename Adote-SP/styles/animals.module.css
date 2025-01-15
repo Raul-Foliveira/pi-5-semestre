@@ -1,13 +1,13 @@
 .featured {
     padding: 40px;
-    background-color: #ffffff;
     text-align: center;
   }
   
   .featured h2 {
     font-family: "Lilita One", sans-serif;
-    color: #005A8D; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 2.7rem;
+    color: #005A8D;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     font-size: 2.5rem;
   }

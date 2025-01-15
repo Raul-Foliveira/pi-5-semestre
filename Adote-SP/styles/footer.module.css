@@ -74,19 +74,51 @@
 }
 
 .socialLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   margin-bottom: 10px;
 }
 
 .socialLinks a {
   color: #fff;
   text-decoration: none;
-  margin: 0 10px;
-  font-size: 16px;
-  transition: color 0.3s ease;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socialLinks a:hover {
-  color: #f1c40f;
+
+  transform: scale(1.1);
+}
+
+/* Estilo para cada rede social */
+.socialLinks .instagram {
+  color: #e4405f; /* Cor do Instagram */
+  font-size: 20px; /* Aumenta o tamanho do WhatsApp */
+  font-weight: bold; /* Destaca o texto */
+}
+
+.socialLinks .facebook {
+  color: #3b5998; /* Cor do Facebook */
+  font-size: 20px; /* Aumenta o tamanho do WhatsApp */
+  font-weight: bold; /* Destaca o texto */
+}
+
+.socialLinks .whatsapp {
+  color: #189947; /* Cor do WhatsApp */
+  font-size: 20px; /* Aumenta o tamanho do WhatsApp */
+  font-weight: bold; /* Destaca o texto */
+  
+}
+
+.socialLinks .whatsapp:hover {
+  color: #128c7e; /* Cor mais escura no hover */
+  transform: scale(1.2); /* Maior destaque no hover */
 }
 
 .footerBottom p {
@@ -103,6 +135,7 @@
   max-height: 80vh;
   overflow-y: auto;
 }
+
 
 
 @media (max-width: 768px) {

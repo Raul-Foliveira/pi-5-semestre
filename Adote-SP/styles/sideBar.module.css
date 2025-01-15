@@ -6,14 +6,21 @@
     width: 250px;
     height: 100%;
     padding: 20px;
-    background: linear-gradient(to bottom, #00686b, #ffffff);
+    background: linear-gradient(to bottom, 
+    #005A8D 0%, 
+    #005A8D 25%, 
+    #016ead 60%, 
+    #f5fafc 100%
+    );
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     z-index: 10;
     overflow-y: auto;
+    text-align: center;
+    font-family: "Lilita One", sans-serif;
 }
 
 .sidebar .backButton {
-    background-color: #FF9915;
+    background-color: #ff4c15;
     color: white;
     padding: 12px;
     border: none;
@@ -37,17 +44,23 @@
 }
 
 .sidebar h3 {
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 10px;
     font-size: 18px;
     color: #ffffff;
     font-weight: bold;
 }
 
+.sidebar h1{
+    color: white;
+}
+
 .sidebar button {
     background-color: #FF9915;
     color: white;
+    font-weight: bold;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 17px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
