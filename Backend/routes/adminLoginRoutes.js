@@ -1,7 +1,6 @@
 // adminLoginRoutes.js
 const express = require('express');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken'); // Adicionando JWT para autenticação
 const router = express.Router();
 const db = require('../db'); // Conexão com o banco de dados
 
@@ -37,17 +36,13 @@ router.post('/api/admin/login', async (req, res) => {
                     }
 
                     if (result) {
-                        // Gerar um token JWT para o administrador
-                        const token = jwt.sign(
-                            { id_admin: administrador.id_admin, email: email },
-                            'secreta_chave', // A chave secreta para o JWT
-                            { expiresIn: '1h' } // Expiração de 1 hora
-                        );
+                        // Recupera o id_admin do banco de dados diretamente
+                        const id_admin = administrador.id_admin;
 
+                        // Retorna o id_admin diretamente, sem o uso de JWT
                         res.status(200).json({ 
                             message: 'Login bem-sucedido', 
-                            id_admin: administrador.id_admin,
-                            token: token // Retorna o token JWT
+                            id_admin: id_admin  // Retorna o id_admin diretamente
                         });
                     } else {
                         res.status(401).json({ message: 'Senha incorreta' });

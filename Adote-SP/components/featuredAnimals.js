@@ -47,10 +47,7 @@ const FeaturedAnimals = () => {
                 {animals.length > 0 ? (
                     animals.map((animal) => (
                         <div key={animal.id_animal} className={styles.animalCard}>
-                            <img
-                                src={animal.fotos.length > 0 ? animal.fotos[0].url : '/images/cat.jpg'}
-                                alt={animal.nome}
-                            />
+                            <img src="/images/jimmy.jpg" alt="jimmy" className={styles.imganimais}/>
                             <h3>{animal.nome}</h3>
                             <p>{animal.especie} - {animal.idade} anos</p>
                             <p>Tamanho: {animal.tamanho}</p>
